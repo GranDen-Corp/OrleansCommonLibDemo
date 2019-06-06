@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "LocalConsoleSiloHost": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "GrainLoadPath": "../../../../"
+      }
+    }
+  }
+}

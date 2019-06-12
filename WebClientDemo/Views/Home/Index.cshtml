@@ -1,0 +1,20 @@
+﻿@model WebClientDemo.Models.ResultViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Call Orleans Grain Demo</h1>
+
+@if (Model == null)
+{
+    <form asp-action="CallGrainDemo" method="post">
+        <input id="btn" type="submit" value="Call Grain"/>
+    </form>
+}
+else
+{
+    <div>
+        Call Result = @Model.Result
+    </div>
+}
+

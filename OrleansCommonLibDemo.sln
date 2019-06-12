@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld.Grains", "Server
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalConsoleSiloHost", "ServerSide\LocalConsoleSiloHost\LocalConsoleSiloHost.csproj", "{936C3069-4B40-48AA-BBD2-9AD4D8CD6E98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientDemo", "WebClientDemo\WebClientDemo.csproj", "{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{936C3069-4B40-48AA-BBD2-9AD4D8CD6E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{936C3069-4B40-48AA-BBD2-9AD4D8CD6E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{936C3069-4B40-48AA-BBD2-9AD4D8CD6E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{17864AA1-7EFC-4D10-AF85-0E667D2F46B3} = {CAA363EF-87D5-4F6A-BC99-A91C459599A1}
 		{1F626E79-6B6F-46F8-877F-3AEA5540DB1C} = {F6212935-5B57-4E1D-97AE-BE140D0B4044}
 		{936C3069-4B40-48AA-BBD2-9AD4D8CD6E98} = {F6212935-5B57-4E1D-97AE-BE140D0B4044}
+		{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4} = {122598AF-5D50-4408-9E31-1B560B7506C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6FA0BD6-611E-4F9B-B03A-8401D3881C28}

@@ -1,0 +1,62 @@
+{
+    // Use IntelliSense to find out which attributes exist for C# debugging
+    // Use hover for the description of the existing attributes
+    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Cmd Client",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build cmd client",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/ClientSide/OrleansCommonLibDemo/bin/Debug/netcoreapp2.2/OrleansCommonLibDemo.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/ClientSide/OrleansCommonLibDemo",
+            // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "sourceLinkOptions": {
+                "https://raw.githubusercontent.com/*": {
+                    "enabled": true
+                },
+                "*": {
+                    "enabled": false
+                }
+            }
+        },
+        {
+            "name": "Launch Demo Server",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build demo server",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/ServerSide/LocalConsoleSiloHost/bin/Debug/netcoreapp2.2/LocalConsoleSiloHost.dll",
+            "args": [],
+            "env": {
+                "GrainLoadPath": "../"
+            },
+            "cwd": "${workspaceFolder}/ServerSide/LocalConsoleSiloHost",
+            // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
+            "console": "integratedTerminal",
+            "stopAtEntry": false,
+            "sourceLinkOptions": {
+                "https://raw.githubusercontent.com/*": {
+                    "enabled": true
+                },
+                "*": {
+                    "enabled": false
+                }
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Demo",
+            "configurations": [
+                "Launch Demo Server",
+                "Launch Cmd Client"
+            ]
+        }
+    ]
+}

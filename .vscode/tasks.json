@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "dependsOn": [
+                "build demo server",
+                "build cmd client"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build demo grain",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/ServerSide/HelloWorld.Grains/HelloWorld.Grains.csproj"
+            ],
+            "problemMatcher": "$tsc",
+            "group": "build"
+        },
+        {
+            "label": "build demo server",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/ServerSide/LocalConsoleSiloHost/LocalConsoleSiloHost.csproj"
+            ],
+            "problemMatcher": "$tsc",
+            "group": "build",
+            "dependsOn":[
+                "build demo grain"
+            ]
+        },
+        {
+            "label": "build cmd client",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/ClientSide/OrleansCommonLibDemo/OrleansCommonLibDemo.csproj"
+            ],
+            "problemMatcher": "$tsc",
+            "group": "build"
+        }
+    ]
+}

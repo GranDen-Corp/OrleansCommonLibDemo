@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <OrleansCodeGenLogLevel>Trace</OrleansCodeGenLogLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,10 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj" />
-    <ProjectReference Include="..\VisitTracker.ShareInterface\VisitTracker.ShareInterface.csproj">
-      <Private>false</Private>
-    </ProjectReference>
+    <ProjectReference Include="..\VisitTracker.ShareInterface\VisitTracker.ShareInterface.csproj" />
   </ItemGroup>
 
 </Project>

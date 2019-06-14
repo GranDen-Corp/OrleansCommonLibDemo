@@ -31,7 +31,8 @@
     },
     "GrainOption": {
       "LoadPaths": [
-        "{GrainLoadPath}/HelloWorld.Grains/bin/Debug/netstandard2.0/HelloWorld.Grains.dll"
+        "{GrainLoadPath}/HelloWorld.Grains/bin/Debug/netstandard2.0/HelloWorld.Grains.dll",
+        "{GrainLoadPath}/VisitTracker.Grain/bin/Debug/netstandard2.0/VisitTracker.Grain.dll"
       ],
       "ExcludedTypeFullNames": []
     }

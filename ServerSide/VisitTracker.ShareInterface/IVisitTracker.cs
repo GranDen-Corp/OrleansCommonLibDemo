@@ -1,7 +1,7 @@
 ﻿using Orleans;
 using System.Threading.Tasks;
 
-namespace HelloWorld.ShareInterface
+namespace VisitTracker.ShareInterface
 {
     public interface IVisitTracker : IGrainWithStringKey
     {

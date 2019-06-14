@@ -1,10 +1,10 @@
-﻿using HelloWorld.ShareInterface;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Orleans;
 using System;
 using System.Threading.Tasks;
+using VisitTracker.ShareInterface;
 
-namespace HelloWorld.Grains.VisitTrackerGrain
+namespace VisitTracker.Grain
 {
     public class VisitTracker : Grain<VisitTrackerState>, IVisitTracker
     {

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HelloWorld.ShareInterface;
 using Microsoft.Extensions.Logging;
+using VisitTracker.ShareInterface;
 
 [assembly: Orleans.CodeGeneration.KnownAssembly(typeof(IHello))]
 namespace HelloWorld.Grains

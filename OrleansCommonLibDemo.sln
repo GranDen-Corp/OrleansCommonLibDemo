@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld.Grains", "Server
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalConsoleSiloHost", "ServerSide\LocalConsoleSiloHost\LocalConsoleSiloHost.csproj", "{936C3069-4B40-48AA-BBD2-9AD4D8CD6E98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientDemo", "WebClientDemo\WebClientDemo.csproj", "{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClientDemo", "ClientSide\WebClientDemo\WebClientDemo.csproj", "{D2BAF1F1-DC5F-43CF-BA89-328C0033B9C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

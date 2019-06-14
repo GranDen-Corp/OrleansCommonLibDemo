@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using GranDen.Orleans.Server.SharedInterface;
+﻿using System.Threading.Tasks;
 using HelloWorld.ShareInterface;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 [assembly: Orleans.CodeGeneration.KnownAssembly(typeof(IHello))]
@@ -19,11 +16,16 @@ namespace HelloWorld.Grains
             _greeter = greeter;
         }
 
-        public Task<string> SayHello(string greeting)
+        public async Task<string> SayHello(string greeting)
         {
             _logger.LogInformation("HelloGrain receive RPC method invocation request");
             var ret = _greeter.DoGreeting(greeting);
-            return Task.FromResult(ret);
+
+            _logger.LogInformation("Call VisitTracker to recored calling counts");
+            var visitTracker = GrainFactory.GetGrain<IVisitTracker>(ret);
+            await visitTracker.VisitAsync();
+
+            return ret;
         }
     }
 }

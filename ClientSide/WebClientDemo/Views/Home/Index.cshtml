@@ -8,7 +8,10 @@
 @if (Model == null)
 {
     <form asp-action="CallGrainDemo" method="post">
-        <input id="btn" type="submit" value="Call Grain"/>
+        <span> 
+        <input type="text" name="input" value="Hello Orleans"/> 
+        </span>
+        <input type="submit" value="Call Grain"/>
     </form>
 }
 else

@@ -12,6 +12,9 @@ namespace HelloWorld.Grains
             part => part.AddDynamicPart(typeof(Greeter).Assembly);
 
         Action<HostBuilderContext, IServiceCollection> IServiceConfigDelegate.ServiceConfigurationAction =>
-            (ctx, service) => service.AddTransient<Greeter>();
+            (ctx, service) =>
+            {
+                service.AddTransient<Greeter>();
+            };
     }
 }

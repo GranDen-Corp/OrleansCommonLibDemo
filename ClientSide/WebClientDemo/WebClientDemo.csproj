@@ -17,7 +17,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj" />
+    <ProjectReference Include="..\..\RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj" />
   </ItemGroup>
 
 </Project>

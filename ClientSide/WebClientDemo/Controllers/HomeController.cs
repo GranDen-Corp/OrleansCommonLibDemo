@@ -44,7 +44,7 @@ namespace WebClientDemo.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CallGrainDemo()
+        public async Task<IActionResult> CallGrainDemo(string input)
         {
             var (clusterInfo, providerOption) = _configuration.GetSection("Orleans").GetSiloSettings();
 
@@ -56,7 +56,7 @@ namespace WebClientDemo.Controllers
                 var grain = client.GetGrain<IHello>(0);
                 _logger.LogInformation("Get greeting grain, start calling RPC method...");
 
-                var returnValue = await grain.SayHello("Hello Orleans");
+                var returnValue = await grain.SayHello(input);
                 _logger.LogInformation($"RPC method return value is \r\n\r\n{{{returnValue}}}\r\n\r\n");
 
                 await client.Close();

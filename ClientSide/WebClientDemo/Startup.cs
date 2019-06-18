@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GranDen.Orleans.Client.CommonLib.TypedOptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebClientDemo.Hubs;
 
 namespace WebClientDemo
 {
@@ -31,7 +33,16 @@ namespace WebClientDemo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            var orleansConfig = Configuration.GetSection("Orleans");
+            services.Configure<ClusterInfoOption>(orleansConfig.GetSection("Cluster"));
+            services.Configure<OrleansProviderOption>(orleansConfig.GetSection("Provider"));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSignalR().AddHubOptions<LongRunningStatusHub>(options =>
+            {
+                options.EnableDetailedErrors = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

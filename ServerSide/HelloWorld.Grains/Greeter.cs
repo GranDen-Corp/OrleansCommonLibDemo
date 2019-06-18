@@ -2,7 +2,7 @@
 
 namespace HelloWorld.Grains
 {
-    public class Greeter
+    public class Greeter : IGreeter
     {
         private readonly ILogger<Greeter> _logger;
 
@@ -16,5 +16,10 @@ namespace HelloWorld.Grains
             _logger.LogInformation($"SayHello message received: greeting = '{greeting}'");
             return $"You said: '{greeting}', I say: Hello!";
         }
+    }
+
+    public interface IGreeter
+    {
+        string DoGreeting(string greeting);
     }
 }

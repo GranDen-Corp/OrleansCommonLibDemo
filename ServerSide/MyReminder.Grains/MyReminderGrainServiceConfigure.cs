@@ -3,27 +3,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.ApplicationParts;
 using System;
-using System.Linq;
-using System.Reflection;
-using Orleans;
 
-namespace HelloWorld.Grains
+namespace MyReminder.Grains
 {
-    public class HelloGrainServiceConfigure : IGrainServiceConfigDelegate
+    public class MyReminderGrainServiceConfigure : IGrainServiceConfigDelegate
     {
         public Action<IApplicationPartManager> AppPartConfigurationAction =>
             part =>
             {
-                part.AddDynamicPart(typeof(IGreeter).Assembly);
+                part.AddDynamicPart(typeof(OutputMsg).Assembly);
             };
 
         public Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
             (ctx, service) =>
             {
-                //var apm = ctx.GetApplicationPartManager();
-                //apm.AddApplicationPart(typeof(IGreeter).Assembly);
-
-                service.AddTransient<IGreeter, Greeter>();
+                service.AddTransient<IOutputMsg, OutputMsg>();
             };
     }
 }

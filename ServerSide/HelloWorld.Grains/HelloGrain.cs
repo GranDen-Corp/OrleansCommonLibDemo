@@ -9,9 +9,9 @@ namespace HelloWorld.Grains
     public class HelloGrain : Orleans.Grain, IHello
     {
         private readonly ILogger<HelloGrain> _logger;
-        private readonly Greeter _greeter;
+        private readonly IGreeter _greeter;
 
-        public HelloGrain(ILogger<HelloGrain> logger, Greeter greeter)
+        public HelloGrain(ILogger<HelloGrain> logger, IGreeter greeter)
         {
             _logger = logger;
             _greeter = greeter;
@@ -22,7 +22,7 @@ namespace HelloWorld.Grains
             _logger.LogInformation("HelloGrain receive RPC method invocation request");
             var ret = _greeter.DoGreeting(greeting);
 
-            _logger.LogInformation("Call VisitTracker to recored calling counts");
+            _logger.LogInformation("Call VisitTracker to record calling counts");
             var visitTracker = GrainFactory.GetGrain<IVisitTracker>(ret);
             await visitTracker.VisitAsync();
 

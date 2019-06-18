@@ -4,11 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using GranDen.Orleans.Client.CommonLib;
+using GranDen.Orleans.Client.CommonLib.TypedOptions;
 using HelloWorld.ShareInterface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using WebClientDemo.Models;
 
@@ -19,12 +21,15 @@ namespace WebClientDemo.Controllers
         private const string DataKey = "call_result";
 
         private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _configuration;
+        private readonly ClusterInfoOption _clusterInfo;
+        private readonly OrleansProviderOption _providerOption;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, 
+            IOptionsMonitor<ClusterInfoOption> clusterInfoOptionsMonitor, IOptionsMonitor<OrleansProviderOption> providerOptionsMonitor)
         {
             _logger = logger;
-            _configuration = configuration;
+            _clusterInfo = clusterInfoOptionsMonitor.CurrentValue;
+            _providerOption = providerOptionsMonitor.CurrentValue;
         }
 
         public IActionResult Index()
@@ -46,9 +51,7 @@ namespace WebClientDemo.Controllers
 
         public async Task<IActionResult> CallGrainDemo(string input)
         {
-            var (clusterInfo, providerOption) = _configuration.GetSection("Orleans").GetSiloSettings();
-
-            using (var client = OrleansClientBuilder.CreateClient(_logger, clusterInfo, providerOption, new[] { typeof(IHello) }))
+            using (var client = OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption, new[] { typeof(IHello) }))
             {
                 await client.ConnectWithRetryAsync();
                 _logger.LogInformation("Client successfully connect to silo host");

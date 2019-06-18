@@ -8,7 +8,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="GranDen.Orleans.Client.CommonLib" Version="1.0.7" />
+    <PackageReference Include="GranDen.Orleans.Client.CommonLib" Version="1.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />

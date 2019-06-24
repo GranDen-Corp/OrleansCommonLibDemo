@@ -3,27 +3,26 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.ApplicationParts;
 using System;
-using System.Linq;
-using System.Reflection;
-using Orleans;
+using Microsoft.Extensions.Logging;
 
 namespace HelloWorld.Grains
 {
-    public class HelloGrainServiceConfigure : IGrainServiceConfigDelegate
+    public class HelloGrainServiceConfigure : AbstractServiceConfigDelegate
     {
-        public Action<IApplicationPartManager> AppPartConfigurationAction =>
+        public override Action<IApplicationPartManager> AppPartConfigurationAction =>
             part =>
             {
-                part.AddDynamicPart(typeof(IGreeter).Assembly);
+                part.AddDynamicPart(typeof(Greeter).Assembly);
             };
 
-        public Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
-            (ctx, service) =>
+        public override Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
+        (ctx, services) =>
+        {
+            services.AddTransient<IGreeter, Greeter>(provider =>
             {
-                //var apm = ctx.GetApplicationPartManager();
-                //apm.AddApplicationPart(typeof(IGreeter).Assembly);
-
-                service.AddTransient<IGreeter, Greeter>();
-            };
+                var logger = provider.GetService<ILogger<Greeter>>();
+                return new Greeter(logger);
+            });
+        };
     }
 }

@@ -6,15 +6,15 @@ using System;
 
 namespace MyReminder.Grains
 {
-    public class MyReminderGrainServiceConfigure : IGrainServiceConfigDelegate
+    public class MyReminderGrainServiceConfigure : AbstractServiceConfigDelegate
     {
-        public Action<IApplicationPartManager> AppPartConfigurationAction =>
+        public override Action<IApplicationPartManager> AppPartConfigurationAction =>
             part =>
             {
                 part.AddDynamicPart(typeof(OutputMsg).Assembly);
             };
 
-        public Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
+        public override Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
             (ctx, service) =>
             {
                 service.AddTransient<IOutputMsg, OutputMsg>();

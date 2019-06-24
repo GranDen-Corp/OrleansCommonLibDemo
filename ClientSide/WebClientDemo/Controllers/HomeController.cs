@@ -7,8 +7,6 @@ using GranDen.Orleans.Client.CommonLib;
 using GranDen.Orleans.Client.CommonLib.TypedOptions;
 using HelloWorld.ShareInterface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -25,7 +23,8 @@ namespace WebClientDemo.Controllers
         private readonly OrleansProviderOption _providerOption;
 
         public HomeController(ILogger<HomeController> logger, 
-            IOptionsMonitor<ClusterInfoOption> clusterInfoOptionsMonitor, IOptionsMonitor<OrleansProviderOption> providerOptionsMonitor)
+            IOptionsMonitor<ClusterInfoOption> clusterInfoOptionsMonitor, 
+            IOptionsMonitor<OrleansProviderOption> providerOptionsMonitor)
         {
             _logger = logger;
             _clusterInfo = clusterInfoOptionsMonitor.CurrentValue;
@@ -42,11 +41,6 @@ namespace WebClientDemo.Controllers
 
             return View(callResultViewModel);
 
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         public async Task<IActionResult> CallGrainDemo(string input)

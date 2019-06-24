@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 using HelloWorld.ShareInterface;
 using Microsoft.Extensions.Logging;
-using VisitTracker.ShareInterface;
+using VisitTracker.Interface;
 
-[assembly: Orleans.CodeGeneration.KnownAssembly(typeof(IHello))]
 namespace HelloWorld.Grains
 {
     public class HelloGrain : Orleans.Grain, IHello
@@ -26,6 +25,13 @@ namespace HelloWorld.Grains
             var visitTracker = GrainFactory.GetGrain<IVisitTracker>(ret);
             await visitTracker.VisitAsync();
 
+            var visitTimes = await visitTracker.GetNumberOfVisits();
+
+            if (visitTimes > 1)
+            {
+                ret += $" Visit {visitTimes} times!";
+            }
+            
             return ret;
         }
     }

@@ -7,7 +7,7 @@
 
 <h1>Call Long Task Demo</h1>
 
-<form asp-action="" method="post">
+<form asp-action="CallGrainAlarm" method="post">
     <input id="callBtn" type="submit" value="Call Task" disabled />
 </form>
 
@@ -38,7 +38,7 @@
                     next: (item) => {
                         document.getElementById("current_status").textContent = item;
                         if (item !== "finished" || item !== "stopped") {
-                            document.getElementById("btn").disabled = true;
+                            document.getElementById("callBtn").disabled = true;
                         }
                     },
                     complete: () => {
@@ -46,7 +46,7 @@
                         document.getElementById("callBtn").disabled = false;
                     },
                     error: (err) => {
-                        document.getElementById("current_status").textContent = "get status error=" + err;
+                        document.getElementById("current_status").textContent = `get status error=${err}`;
                     }
                 });
             });

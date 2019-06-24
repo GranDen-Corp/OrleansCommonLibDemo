@@ -14,16 +14,17 @@ namespace LocalConsoleSiloHost
         {
             SetupLogger();
 
-            var genericHostBuilder = OrleansSiloBuilderExtension.CreateHostBuilder(args);
+            var genericHostBuilder = OrleansSiloBuilderExtension.CreateHostBuilder(args).ApplySerilog();
 
             try
             {
                 var genericHost = genericHostBuilder.Build();
                 genericHost.Run();
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException exception)
             {
                 //do nothing
+                Log.Information(exception,"Orleans operation cancelled");
             }
             catch (Exception ex)
             {
@@ -35,7 +36,7 @@ namespace LocalConsoleSiloHost
         private static void SetupLogger()
         {
             var logConfig = new LoggerConfiguration()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .MinimumLevel.Override("Orleans.Runtime.Management.ManagementGrain", LogEventLevel.Warning)
                 .MinimumLevel.Override("Orleans.Runtime.SiloControl", LogEventLevel.Warning)
                 .Enrich.FromLogContext()

@@ -9,6 +9,7 @@
       "GatewayPort": 8310
     },
     "Provider": {
+      //"DefaultProvider": "InMemory"
       "DefaultProvider": "MongoDB",
       "MongoDB": {
         "Cluster": {
@@ -32,7 +33,7 @@
     "GrainOption": {
       "LoadPaths": [
         "{GrainLoadPath}/HelloWorld.Grains/bin/Debug/netstandard2.0/HelloWorld.Grains.dll",
-        "{GrainLoadPath}/VisitTracker.Grain/bin/Debug/netstandard2.0/VisitTracker.Grain.dll"
+        "{GrainLoadPath}/MyReminder.Grains/bin/Debug/netstandard2.0/MyReminder.Grains.dll"
       ],
       "ExcludedTypeFullNames": []
     }

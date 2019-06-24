@@ -45,7 +45,7 @@ namespace WebClientDemo.Controllers
         public async Task<IActionResult> CallGrainAlarm()
         {
             using (var client =
-                OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption, new[] {typeof(IMyReminder)}))
+                OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption))
             {
                 await client.ConnectWithRetryAsync();
 

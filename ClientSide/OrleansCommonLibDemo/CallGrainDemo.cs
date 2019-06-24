@@ -20,7 +20,8 @@ namespace OrleansCommonLibDemo
         public async Task CallHello()
         {
             var (clusterInfo, providerOption) = GetConfigSettings();
-            using (var client = OrleansClientBuilder.CreateClient(_logger, clusterInfo, providerOption, new[] { typeof(IHello) }))
+            using (var client = OrleansClientBuilder.CreateClient(_logger, clusterInfo, providerOption))
+            //using (var client = OrleansClientBuilder.CreateLocalhostClient(_logger, 8310, clusterInfo.ClusterId, clusterInfo.ServiceId))
             {
                 await client.ConnectWithRetryAsync();
                 _logger.LogInformation("Client successfully connect to silo host");
@@ -30,6 +31,12 @@ namespace OrleansCommonLibDemo
 
                 var returnValue = await grain.SayHello("Hello Orleans");
                 _logger.LogInformation($"RPC method return value is \r\n\r\n{{{returnValue}}}\r\n\r\n");
+
+                var return2Value = await grain.SayHello("Hello again");
+                _logger.LogInformation($"RPC method return value is \r\n\r\n{{{return2Value}}}\r\n\r\n");
+
+                var return3Value = await grain.SayHello("Hello Orleans");
+                _logger.LogInformation($"RPC method return value is \r\n\r\n{{{return3Value}}}\r\n\r\n");
 
                 await client.Close();
                 _logger.LogInformation("Client successfully close connection to silo host");

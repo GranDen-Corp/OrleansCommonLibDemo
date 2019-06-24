@@ -13,14 +13,33 @@
             }
         },
         {
-            "label": "build demo grain",
+            "label": "build demo grains",
+            "dependsOn":[
+                "build HelloWorld grain",
+                "build MyReminder grain"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build HelloWorld grain",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ServerSide/HelloWorld.Grains/HelloWorld.Grains.csproj"
+                "${workspaceFolder}/ServerSide/HelloWorld.Grain/HelloWorld.Grain.csproj"
             ],
-            "problemMatcher": "$tsc",
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "build MyReminder grain",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/ServerSide/MyReminder.Grain/MyReminder.Grain.csproj"
+            ],
+            "problemMatcher": "$msCompile",
             "group": "build"
         },
         {
@@ -31,10 +50,10 @@
                 "build",
                 "${workspaceFolder}/ServerSide/LocalConsoleSiloHost/LocalConsoleSiloHost.csproj"
             ],
-            "problemMatcher": "$tsc",
+            "problemMatcher": "$msCompile",
             "group": "build",
             "dependsOn":[
-                "build demo grain"
+                "build demo grains"
             ]
         },
         {
@@ -43,9 +62,9 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ClientSide/OrleansCommonLibDemo/OrleansCommonLibDemo.csproj"
+                "${workspaceFolder}/ClientSide/ConsoleClientDemo/ConsoleClientDemo.csproj"
             ],
-            "problemMatcher": "$tsc",
+            "problemMatcher": "$msCompile",
             "group": "build"
         }
     ]

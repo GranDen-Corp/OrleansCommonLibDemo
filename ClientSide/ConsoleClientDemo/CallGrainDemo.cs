@@ -6,7 +6,7 @@ using HelloWorld.ShareInterface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace OrleansCommonLibDemo
+namespace ConsoleClientDemo
 {
     public class CallGrainDemo
     {

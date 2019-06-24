@@ -5,14 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Web Client",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/ClientSide/WebClientDemo/bin/Debug/netcoreapp2.2/WebClientDemo.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/ClientSide/WebClientDemo",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/ClientSide/WebClientDemo/Views"
+            }
+        },
+        {
             "name": "Launch Cmd Client",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build cmd client",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ClientSide/OrleansCommonLibDemo/bin/Debug/netcoreapp2.2/OrleansCommonLibDemo.dll",
+            "program": "${workspaceFolder}/ClientSide/ConsoleClientDemo/bin/Debug/netcoreapp2.2/ConsoleClientDemo.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/ClientSide/OrleansCommonLibDemo",
+            "cwd": "${workspaceFolder}/ClientSide/ConsoleClientDemo",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "externalTerminal",
             "stopAtEntry": false,
@@ -52,10 +72,17 @@
     ],
     "compounds": [
         {
-            "name": "Launch Demo",
+            "name": "Launch Console Demo",
             "configurations": [
                 "Launch Demo Server",
                 "Launch Cmd Client"
+            ]
+        },
+        {
+            "name": "Launch Web Demo",
+            "configurations": [
+                "Launch Demo Server",
+                "Launch Web Client"
             ]
         }
     ]

@@ -38,8 +38,13 @@ namespace WebClientDemo.Controllers
             ViewData["signalrHubUrl"] = @"/running_status";
             ViewData["sessionId"] = runSessionId;
 
-            var viewModel = JsonConvert.DeserializeObject<LongTaskViewModel>(TempData[tempDataKey].ToString());
-            return View(viewModel);
+            if(TempData.ContainsKey(tempDataKey))
+            {
+                var viewModel = JsonConvert.DeserializeObject<LongTaskViewModel>(TempData[tempDataKey].ToString());
+                return View(viewModel);
+            }
+
+            return View();
         }
 
         public async Task<IActionResult> CallGrainAlarm()

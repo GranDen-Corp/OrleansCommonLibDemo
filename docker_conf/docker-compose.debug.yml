@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  localconsolesilohost:
+    environment:
+      - ORLEANS_HOST_ENVIRONMENT=Development
+      - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Cluster__DbConn=mongodb://host.docker.internal:27017
+      - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Cluster__DbName=demo-silo-Clustering
+      - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Storage__DbConn=mongodb://host.docker.internal:27017
+      - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Storage__DbName=demo-silo-Storage
+      - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Reminder__DbConn=mongodb://host.docker.internal:27017
+      - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Reminder__DbName=demo-silo-Reminder
+    ports:
+      - "8210:8210"
+  webclientdemo:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTPS_PORT=44350
+      - Orleans__Provider__MongoDB__Cluster__DbConn=mongodb://host.docker.internal:27017
+    ports:
+      - "62794:80"
+      - "44350:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

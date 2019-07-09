@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+  localconsolesilohost:
+    image: ${DOCKER_REGISTRY-}localconsolesilohost
+    build:
+      context: .
+      dockerfile: ServerSide/LocalConsoleSiloHost/Dockerfile
+    volumes:
+      - helloworld_grain_volume:/grains/helloworld_grain
+      - myreminder_grain_volume:/grains/myreminder_grain
+    networks:
+      - orlean_demo
+    depends_on:
+      - helloworld_grain
+      - myreminder_grain
+
+  helloworld_grain:
+    image: ${DOCKER_REGISTRY-}helloworld_grain
+    build:
+      context: .
+      dockerfile: ServerSide/HelloWorld.Grain/docker/Dockerfile
+    volumes:
+      - helloworld_grain_volume:/app_grain
+
+  myreminder_grain:
+    image: ${DOCKER_REGISTRY-}myreminder_grain
+    build:
+      context: .
+      dockerfile: ./ServerSide/MyReminder.Grain/docker/Dockerfile
+    volumes:
+      - myreminder_grain_volume:/app_grain
+
+  webclientdemo:
+    image: ${DOCKER_REGISTRY-}webclientdemo
+    build:
+      context: .
+      dockerfile: ClientSide/WebClientDemo/Dockerfile
+    networks:
+      - orlean_demo
+
+volumes:
+  helloworld_grain_volume:
+  myreminder_grain_volume:
+
+networks:
+  orlean_demo:

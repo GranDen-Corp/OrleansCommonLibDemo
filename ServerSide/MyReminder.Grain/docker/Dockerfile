@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim AS base
+WORKDIR /app_grain
+
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+WORKDIR /src
+COPY ["ServerSide/MyReminder.Grain/MyReminder.Grain.csproj", "ServerSide/MyReminder.Grain/"]
+COPY ["RPC_Share/MyReminder.ShareInterface/MyReminder.ShareInterface.csproj", "RPC_Share/MyReminder.ShareInterface/"]
+RUN dotnet restore "ServerSide/MyReminder.Grain/MyReminder.Grain.csproj"
+COPY . .
+WORKDIR /src/ServerSide/MyReminder.Grain
+RUN dotnet build "MyReminder.Grain.csproj" -c Release -o /app_grain
+
+FROM build as publish
+RUN dotnet publish "MyReminder.Grain.csproj" -c Release -o /app_grain
+
+FROM base AS final
+WORKDIR /app_grain
+COPY --from=publish /app_grain .
+VOLUME ["/app_grain"]
+CMD ["/bin/true"]

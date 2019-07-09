@@ -31,6 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReminder.ShareInterface",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitTracker.Interface", "RPC_Share\VisitTracker.Interface\VisitTracker.Interface.csproj", "{2C536C7D-CAA8-4D66-9894-56741FC7EAF3}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker_conf", "docker_conf", "{34387E05-9FB6-4DFB-9C35-4C6E373EEC48}"
+	ProjectSection(SolutionItems) = preProject
+		docker_conf\docker-compose.debug.yml = docker_conf\docker-compose.debug.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +76,10 @@ Global
 		{2C536C7D-CAA8-4D66-9894-56741FC7EAF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C536C7D-CAA8-4D66-9894-56741FC7EAF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C536C7D-CAA8-4D66-9894-56741FC7EAF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

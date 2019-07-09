@@ -5,6 +5,9 @@
       "environmentVariables": {
         "GrainLoadPath": "../../../../"
       }
+    },
+    "Docker": {
+      "commandName": "Docker"
     }
   }
 }

@@ -34,7 +34,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitTracker.ShareInterface
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberGenerator.Grain", "ServerSide\Grains\NumberGenerator.Grain\NumberGenerator.Grain.csproj", "{31C74EAC-64C3-43D8-BB42-53269B4BDBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberGenerator.ShareInterface", "RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj", "{972BF163-C3FE-4BF5-A478-E8934DFBA048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberGenerator.ShareInterface", "RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj", "{972BF163-C3FE-4BF5-A478-E8934DFBA048}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker_conf", "docker_conf", "{34387E05-9FB6-4DFB-9C35-4C6E373EEC48}"
+	ProjectSection(SolutionItems) = preProject
+		docker_conf\docker-compose.debug.yml = docker_conf\docker-compose.debug.yml
+		docker_conf\silohost.env = docker_conf\silohost.env
+		docker_conf\webclient.env = docker_conf\webclient.env
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +91,10 @@ Global
 		{972BF163-C3FE-4BF5-A478-E8934DFBA048}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{972BF163-C3FE-4BF5-A478-E8934DFBA048}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{972BF163-C3FE-4BF5-A478-E8934DFBA048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B915806-B6FD-45AB-94B6-976ABFD4BDA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

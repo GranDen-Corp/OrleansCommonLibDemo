@@ -14,7 +14,6 @@ namespace NumberGenerator.Grain
     // ReSharper disable once UnusedMember.Global
     public class NumberGeneratorServiceConfigure : AbstractServiceConfigDelegate<NumberGeneratorGrain>
     {
-        public override Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
-            (ctx, service) => { };
+        public override Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction { get; }
     }
 }

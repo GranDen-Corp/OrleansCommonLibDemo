@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  orleans_silohost:
+    environment:
+      - GrainLoadPath=/grains
+      - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__0={GrainLoadPath}/helloworld_grain/HelloWorld.Grain.dll
+      - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__1={GrainLoadPath}/myreminder_grain/MyReminder.Grain.dll
+      - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__2={GrainLoadPath}/numbergenerator_grain/NumberGenerator.Grain.dll
+  webclientdemo:
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80

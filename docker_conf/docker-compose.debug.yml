@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  orleans_silohost:
+    environment:
+      - ORLEANS_HOST_ENVIRONMENT=Development
+    env_file: 
+      - ./docker_conf/silohost.env
+    ports:
+      - "8210:8210"
+
+  webclientdemo:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTPS_PORT=44350
+    env_file: 
+      - ./docker_conf/webclient.env
+    ports:
+      - "62794:80"
+      - "44350:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  mongo_store:
+    ports: 
+      - "27027:27017"

@@ -37,7 +37,7 @@ if ($myreminder_grain_ver) {
     Write-Host "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
 }
 
-docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml build $other_args
+docker-compose -f docker-compose.yml -f docker-compose.override.yml build $other_args
 
 if ($env:DOCKER_REGISTRY) {
     Remove-Item Env:\DOCKER_REGISTRY;

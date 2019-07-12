@@ -12,9 +12,15 @@ param(
     [String]$helloworld_grain_ver,
     [Parameter(HelpMessage = "MyReminder grain version")]
     [String]$myreminder_grain_ver,
+    [Parameter(HelpMessage = "Use timestamp for image tag")]
+    [switch]$useTimeStamp = $false,
+    [Parameter(HelpMessage = "Push images to repository")]
+    [switch]$pushImgs = $false,
     [Parameter(ValueFromRemainingArguments)]
     [String]$other_args
 )
+
+$timeStamp = (Get-Date).ToUniversalTime().ToString("yyyyMMdd-HHmmss")
 
 if ($registry) {
     $env:DOCKER_REGISTRY = $registry + "/";
@@ -24,20 +30,45 @@ if ($siloHostVer) {
     $env:SILO_HOST_VER = $siloHostVer;
     Write-Output "Using Silo Host Ver= `"$env:SILO_HOST_VER`"";
 }
+elseif($useTimeStamp){
+    $env:SILO_HOST_VER = $timeStamp;
+    Write-Output "Using Silo Host Ver= `"$env:SILO_HOST_VER`"";
+}
+
 if ($webClientVer) {
     $env:WEB_CLIENT_VER = $webClientVer;
     Write-Output "Using Web Client ver= `"$env:WEB_CLIENT_VER`"";
 }
+elseif ($useTimeStamp) {
+    $env:WEB_CLIENT_VER = $timeStamp;
+    Write-Output "Using Web Client ver= `"$env:WEB_CLIENT_VER`"";
+}
+
 if ($helloworld_grain_ver) {
     $env:GRAIN_VER_HELLOWORLD = $helloworld_grain_ver;
     Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";    
 }
+elseif ($useTimeStamp) {
+    $env:GRAIN_VER_HELLOWORLD = $timeStamp;
+    Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";    
+}
+
 if ($myreminder_grain_ver) {
     $env:GRAIN_VER_MYREMINDER = $myreminder_grain_ver;
     Write-Host "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
 }
+elseif ($useTimeStamp) {
+    $env:GRAIN_VER_MYREMINDER = $timeStamp;
+    Write-Host "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
+}
 
 docker-compose -f docker-compose.yml -f docker-compose.override.yml build $other_args
+
+if($pushImgs -and $registry)
+{
+    Write-Output "Push images to '$registry'"
+    docker images "$registry/*" --format "{{.Repository}}" | Select-Object -Unique | ForEach-Object { docker push $_ }
+}
 
 if ($env:DOCKER_REGISTRY) {
     Remove-Item Env:\DOCKER_REGISTRY;

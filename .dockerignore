@@ -18,4 +18,8 @@
 **/secrets.dev.yaml
 **/values.dev.yaml
 **/.toolstarget
+LICENSE
+Readme.md
+*.sln
 build_docker_imgs.ps1
+deploy_conf/*

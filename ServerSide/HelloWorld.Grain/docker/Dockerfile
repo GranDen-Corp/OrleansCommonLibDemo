@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim AS base
+FROM alpine:3.8 AS base
 WORKDIR /app_grain
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build

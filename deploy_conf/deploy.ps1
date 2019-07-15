@@ -12,26 +12,23 @@ param(
     [String]$helloworld_grain_ver,
     [Parameter(HelpMessage = "MyReminder grain version")]
     [String]$myreminder_grain_ver,
-    [Parameter(HelpMessage = "Use timestamp for image tag")]
-    [switch]$useTimeStamp = $false,
-    [Parameter(HelpMessage = "Push images to repository")]
-    [switch]$pushImgs = $false,
+    [Parameter(HelpMessage = "HTTP Port")]
+    [int]$http_port,
+    [Parameter(HelpMessage = "HTTPS Port")]
+    [int]$https_port,
+    [Parameter(HelpMessage = "SSL cert password")]
+    [String]$https_cert_pass,
     [Parameter(ValueFromRemainingArguments)]
     [String]$other_args
 )
-
-$timeStamp = (Get-Date).ToUniversalTime().ToString("yyyyMMdd-HHmmss")
 
 if ($registry) {
     $env:DOCKER_REGISTRY = $registry + "/";
     Write-Output "Using Registry= `"$env:DOCKER_REGISTRY`"";
 }
+
 if ($siloHostVer) {
     $env:SILO_HOST_VER = $siloHostVer;
-    Write-Output "Using Silo Host Ver= `"$env:SILO_HOST_VER`"";
-}
-elseif($useTimeStamp){
-    $env:SILO_HOST_VER = $timeStamp;
     Write-Output "Using Silo Host Ver= `"$env:SILO_HOST_VER`"";
 }
 
@@ -39,36 +36,35 @@ if ($webClientVer) {
     $env:WEB_CLIENT_VER = $webClientVer;
     Write-Output "Using Web Client ver= `"$env:WEB_CLIENT_VER`"";
 }
-elseif ($useTimeStamp) {
-    $env:WEB_CLIENT_VER = $timeStamp;
-    Write-Output "Using Web Client ver= `"$env:WEB_CLIENT_VER`"";
-}
 
 if ($helloworld_grain_ver) {
     $env:GRAIN_VER_HELLOWORLD = $helloworld_grain_ver;
     Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";    
 }
-elseif ($useTimeStamp) {
-    $env:GRAIN_VER_HELLOWORLD = $timeStamp;
-    Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";    
-}
 
 if ($myreminder_grain_ver) {
     $env:GRAIN_VER_MYREMINDER = $myreminder_grain_ver;
-    Write-Host "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
-}
-elseif ($useTimeStamp) {
-    $env:GRAIN_VER_MYREMINDER = $timeStamp;
-    Write-Host "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
+    Write-Output "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
 }
 
-docker-compose -f docker-compose.yml -f docker-compose.override.yml build $other_args
-
-if($pushImgs -and $registry)
-{
-    Write-Output "Push images to '$registry' registry"
-    docker-compose -f docker-compose.yml push 
+if ($http_port) {
+    $env:HTTP_PORT = $http_port;
+    Write-Output "Using HTTP Port: $env:HTTP_PORT"
 }
+
+if ($https_port) {
+    $env:HTTPS_PORT = $https_port;
+    Write-Output "Using HTTPS Port: $env:HTTPS_PORT"
+}
+
+if ($https_cert_pass) {
+    $env:SSL_PASS = $https_cert_pass;
+}
+else {
+    $env:SSL_PASS = "Pass1234";
+}
+
+docker-compose -f docker-compose.yml -f parameters.yml $other_args
 
 if ($env:DOCKER_REGISTRY) {
     Remove-Item Env:\DOCKER_REGISTRY;
@@ -84,4 +80,13 @@ if ($env:GRAIN_VER_HELLOWORLD) {
 }
 if ($env:GRAIN_VER_MYREMINDER) {
     Remove-Item Env:\GRAIN_VER_MYREMINDER;
+}
+if ($http_port) {
+    Remove-Item Env:\HTTP_PORT;
+}
+if ($https_port) {
+    Remove-Item Env:\HTTPS_PORT;
+}
+if ($https_cert_pass) {
+    Remove-Item Env:\SSL_PASS;
 }

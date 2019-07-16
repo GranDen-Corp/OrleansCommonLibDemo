@@ -14,6 +14,7 @@ services:
     depends_on:
       - helloworld_grain
       - myreminder_grain
+      - mongo_store
 
   helloworld_grain:
     image: ${DOCKER_REGISTRY-}helloworld_grain:${GRAIN_VER_HELLOWORLD:-latest}
@@ -40,10 +41,19 @@ services:
       - orlean_demo
     depends_on: 
       - localconsolesilohost
+      - mongo_store
+  
+  mongo_store:
+    image: mongo:4
+    volumes:
+      - mongo_store_volume:/data/db
+    networks:
+      - orlean_demo
 
 volumes:
   helloworld_grain_volume:
   myreminder_grain_volume:
+  mongo_store_volume:
 
 networks:
   orlean_demo:

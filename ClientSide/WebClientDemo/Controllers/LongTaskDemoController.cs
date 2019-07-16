@@ -52,7 +52,7 @@ namespace WebClientDemo.Controllers
             using (var client =
                 OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption))
             {
-                await client.ConnectWithRetryAsync();
+                await client.ConnectWithRetryAsync(logger: _logger);
 
                 var runSessionId = NUlid.Ulid.NewUlid();
                 var grainGuid = runSessionId.ToGuid();

@@ -1,9 +1,10 @@
-version: '3'
+version: '3.7'
 
 services: 
   localconsolesilohost:
     image: ${DOCKER_REGISTRY-}localconsolesilohost:${SILO_HOST_VER:-latest}
     environment:
+      - ORLEANS_HOST_APP_Orleans__SiloConfig__AdvertisedIp=172.30.0.3
       - GrainLoadPath=/grains
       - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__0={GrainLoadPath}/helloworld_grain/HelloWorld.Grain.dll
       - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__1={GrainLoadPath}/myreminder_grain/MyReminder.Grain.dll
@@ -11,10 +12,12 @@ services:
       - helloworld_grain_volume:/grains/helloworld_grain
       - myreminder_grain_volume:/grains/myreminder_grain
     networks:
-      - orlean_demo
+      orleans-internal:
+        ipv4_address: 172.30.0.3
     depends_on:
       - helloworld_grain
       - myreminder_grain
+      - demo_mongo_store
 
   helloworld_grain:
     image: ${DOCKER_REGISTRY-}helloworld_grain:${GRAIN_VER_HELLOWORLD:-latest}
@@ -39,14 +42,30 @@ services:
     volumes:
       - ./ssl_cert/:/root/.dotnet/https/:ro
     networks:
-      - orlean_demo
+      orleans-internal:
+        ipv4_address: 172.30.0.2
     depends_on: 
       - localconsolesilohost
+      - demo_mongo_store
 
+  demo_mongo_store:
+    image: mongo:4
+    volumes:
+      - demo_mongo_db_volume:/data/db
+    networks:
+      orleans-internal:
+        ipv4_address: 172.30.0.4
 
 volumes:
   helloworld_grain_volume:
   myreminder_grain_volume:
+  demo_mongo_db_volume:
 
 networks:
-  orlean_demo:
+  orleans-internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/24
+      

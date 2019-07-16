@@ -47,7 +47,7 @@ namespace WebClientDemo.Controllers
         {
             using (var client = OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption, new[] { typeof(IHello) }))
             {
-                await client.ConnectWithRetryAsync();
+                await client.ConnectWithRetryAsync(logger: _logger);
                 _logger.LogInformation("Client successfully connect to silo host");
 
                 var grain = client.GetGrain<IHello>(0);

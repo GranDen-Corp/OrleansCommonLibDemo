@@ -64,6 +64,10 @@ else {
     $env:SSL_PASS = "Pass1234";
 }
 
+if ($other_args) {
+    Write-Output "Composer command arguments = $other_args"
+}
+
 docker-compose -f docker-compose.yml -f parameters.yml $other_args
 
 if ($env:DOCKER_REGISTRY) {

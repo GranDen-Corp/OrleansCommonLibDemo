@@ -36,6 +36,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker_conf", "docker_conf", "{34387E05-9FB6-4DFB-9C35-4C6E373EEC48}"
 	ProjectSection(SolutionItems) = preProject
 		docker_conf\docker-compose.debug.yml = docker_conf\docker-compose.debug.yml
+		docker_conf\silohost.env = docker_conf\silohost.env
+		docker_conf\webclient.env = docker_conf\webclient.env
 	EndProjectSection
 EndProject
 Global

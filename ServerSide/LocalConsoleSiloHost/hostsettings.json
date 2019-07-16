@@ -6,7 +6,7 @@
       "AdvertisedIp": "*",
       "ListenOnAnyHostAddress": true,
       "SiloPort": 8320,
-      "GatewayPort": 8310
+      "GatewayPort": 30000
     },
     "Provider": {
       //"DefaultProvider": "InMemory"

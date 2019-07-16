@@ -11,5 +11,5 @@
 4. Run whole docker compose project as:  
   
     ```Shell
-    ./deploy.ps1 -registry [The_remote_registry] -https_cert_pass [SSL_certificate_file_password] up -p [Custom_project_name]
+    ./deploy.ps1 -registry [The_remote_registry] -https_cert_pass [SSL_certificate_file_password] -p [Custom_project_name] up
     ```

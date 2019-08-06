@@ -66,7 +66,7 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml build $other
 
 if($pushImgs -and $registry)
 {
-    Write-Output "Push images to '$registry' registry"
+    Write-Output "`n===`nPush images to '$registry' registry`n===`n"
     docker-compose -f docker-compose.yml push 
 }
 

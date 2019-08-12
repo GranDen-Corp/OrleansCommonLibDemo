@@ -9,7 +9,6 @@
       "GatewayPort": 8310
     },
     "Provider": {
-      //"DefaultProvider": "InMemory"
       "DefaultProvider": "MongoDB",
       "MongoDB": {
         "Cluster": {

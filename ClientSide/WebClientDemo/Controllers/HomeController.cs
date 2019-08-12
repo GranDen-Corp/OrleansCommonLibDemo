@@ -22,8 +22,8 @@ namespace WebClientDemo.Controllers
         private readonly ClusterInfoOption _clusterInfo;
         private readonly OrleansProviderOption _providerOption;
 
-        public HomeController(ILogger<HomeController> logger, 
-            IOptionsMonitor<ClusterInfoOption> clusterInfoOptionsMonitor, 
+        public HomeController(ILogger<HomeController> logger,
+            IOptionsMonitor<ClusterInfoOption> clusterInfoOptionsMonitor,
             IOptionsMonitor<OrleansProviderOption> providerOptionsMonitor)
         {
             _logger = logger;
@@ -45,7 +45,8 @@ namespace WebClientDemo.Controllers
 
         public async Task<IActionResult> CallGrainDemo(string input)
         {
-            using (var client = OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption, new[] { typeof(IHello) }))
+            using (var client =
+                OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption, new[] { typeof(IHello) }))
             {
                 await client.ConnectWithRetryAsync();
                 _logger.LogInformation("Client successfully connect to silo host");

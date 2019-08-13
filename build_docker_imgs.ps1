@@ -62,12 +62,18 @@ elseif ($useTimeStamp) {
     Write-Host "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
 }
 
-docker-compose -f docker-compose.yml -f docker-compose.override.yml build $other_args
+$execStr = "docker-compose -f docker-compose.yml -f docker-compose.override.yml build $other_args";
+
+Write-Host "run:`r`n$execStr";
+
+Invoke-Expression $execStr
 
 if($pushImgs -and $registry)
 {
-    Write-Output "`n===`nPush images to '$registry' registry`n===`n"
-    docker-compose -f docker-compose.yml push 
+    Write-Output "`r`n===`nPush images to '$registry' registry`n===`r`n";
+    $execStr = "docker-compose -f docker-compose.yml push";
+    Write-Host "run:`r`n$execStr";
+    Invoke-Expression $execStr
 }
 
 if ($env:DOCKER_REGISTRY) {

@@ -68,7 +68,11 @@ if ($other_args) {
     Write-Output "Composer command arguments = $other_args"
 }
 
-docker-compose -f docker-compose.yml -f parameters.yml $other_args
+$execStr = "docker-compose -f docker-compose.yml -f parameters.yml $other_args";
+
+Write-Host "run:`r`n$execStr";
+
+Invoke-Expression $execStr
 
 if ($env:DOCKER_REGISTRY) {
     Remove-Item Env:\DOCKER_REGISTRY;

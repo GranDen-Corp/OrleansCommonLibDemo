@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  localconsolesilohost:
+  orleans_silohost:
     environment:
       - ORLEANS_HOST_ENVIRONMENT=Development
     env_file: 

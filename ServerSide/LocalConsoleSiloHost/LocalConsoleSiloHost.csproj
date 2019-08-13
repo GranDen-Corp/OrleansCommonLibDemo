@@ -11,9 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GranDen.Orleans.NetCoreGenericHost.CommonLib" Version="1.1.4" />
-    <PackageReference Include="GranDen.Orleans.NetCoreGenericHost.Serilog" Version="1.1.4" />
-    <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.1.4" />
+    <PackageReference Include="GranDen.Orleans.NetCoreGenericHost.CommonLib" Version="1.1.5" />
+    <PackageReference Include="GranDen.Orleans.NetCoreGenericHost.Serilog" Version="1.1.5" />
+    <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.1.5" />
     <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="2.4.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

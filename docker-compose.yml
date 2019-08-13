@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  localconsolesilohost:
+  orleans_silohost:
     image: ${DOCKER_REGISTRY-}localconsolesilohost:${SILO_HOST_VER:-latest}
     build:
       context: .
@@ -40,7 +40,7 @@ services:
     networks:
       - orlean_demo
     depends_on: 
-      - localconsolesilohost
+      - orleans_silohost
       - mongo_store
   
   mongo_store:

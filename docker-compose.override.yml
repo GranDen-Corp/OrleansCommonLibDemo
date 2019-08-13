@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  localconsolesilohost:
+  orleans_silohost:
     environment:
       - GrainLoadPath=/grains
       - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__0={GrainLoadPath}/helloworld_grain/HelloWorld.Grain.dll

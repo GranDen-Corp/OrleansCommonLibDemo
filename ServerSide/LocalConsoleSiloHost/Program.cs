@@ -38,6 +38,7 @@ namespace LocalConsoleSiloHost
             var logConfig = new LoggerConfiguration()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .MinimumLevel.Override("Orleans.Runtime.Management.ManagementGrain", LogEventLevel.Warning)
+                .MinimumLevel.Override("Orleans.Runtime.MembershipService.MembershipTableManager", LogEventLevel.Warning)
                 .MinimumLevel.Override("Orleans.Runtime.SiloControl", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
                 .Enrich.WithProcessId()

@@ -1,7 +1,7 @@
 version: '3.7'
 
 services: 
-  localconsolesilohost:
+  console_silohost:
     environment:
       - ORLEANS_HOST_ENVIRONMENT=Production      
       - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Cluster__DbConn=mongodb://demo_mongo_store:27017
@@ -10,7 +10,6 @@ services:
       - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Storage__DbName=demo-silo-Storage
       - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Reminder__DbConn=mongodb://demo_mongo_store:27017
       - ORLEANS_HOST_APP_Orleans__Provider__MongoDB__Reminder__DbName=demo-silo-Reminder
-      - ORLEANS_HOST_APP_Orleans__SiloConfig__ListenOnAnyHostAddress=false
     ports:
       - "8210:8210"
 

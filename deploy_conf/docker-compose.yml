@@ -1,17 +1,23 @@
 version: '3.7'
 
 services: 
-  localconsolesilohost:
+  console_silohost:
     image: ${DOCKER_REGISTRY-}localconsolesilohost:${SILO_HOST_VER:-latest}
     environment:
       - GrainLoadPath=/grains
       - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__0={GrainLoadPath}/helloworld_grain/HelloWorld.Grain.dll
       - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__1={GrainLoadPath}/myreminder_grain/MyReminder.Grain.dll
     volumes:
-      - helloworld_grain_volume:/grains/helloworld_grain
-      - myreminder_grain_volume:/grains/myreminder_grain
+      - type: volume
+        source: helloworld_grain_volume
+        target: /grains/helloworld_grain
+        read_only: true
+      - type: volume
+        source: myreminder_grain_volume
+        target: /grains/myreminder_grain
+        read_only: true
     networks:
-      - orleans-internal
+      - orleans_virtual_network
     depends_on:
       - helloworld_grain
       - myreminder_grain
@@ -20,12 +26,12 @@ services:
   helloworld_grain:
     image: ${DOCKER_REGISTRY-}helloworld_grain:${GRAIN_VER_HELLOWORLD:-latest}
     volumes:
-      - helloworld_grain_volume:/app_grain
+      - helloworld_grain_volume:/app_grain:ro
 
   myreminder_grain:
     image: ${DOCKER_REGISTRY-}myreminder_grain:${GRAIN_VER_MYREMINDER:-latest}
     volumes:
-      - myreminder_grain_volume:/app_grain
+      - myreminder_grain_volume:/app_grain:ro
 
   webclientdemo:
     image: ${DOCKER_REGISTRY-}webclientdemo:${WEB_CLIENT_VER:-latest}
@@ -38,11 +44,14 @@ services:
       - "${HTTP_PORT:-80}:80"
       - "${HTTPS_PORT:-443}:443"
     volumes:
-      - ./ssl_cert/:/root/.dotnet/https/:ro
+      - type: bind
+        source: ./ssl_cert/
+        target: /root/.dotnet/https/
+        read_only: true
     networks:
-      - orleans-internal
+      - orleans_virtual_network
     depends_on: 
-      - localconsolesilohost
+      - console_silohost
       - demo_mongo_store
 
   demo_mongo_store:
@@ -50,12 +59,12 @@ services:
     volumes:
       - demo_mongo_db_volume:/data/db
     networks:
-      - orleans-internal
+      - orleans_virtual_network
+
+networks:
+  orleans_virtual_network:
 
 volumes:
   helloworld_grain_volume:
   myreminder_grain_volume:
   demo_mongo_db_volume:
-
-networks:
-  orleans-internal:

@@ -50,10 +50,10 @@ services:
     networks:
       - orlean_demo
 
+networks:
+  orlean_demo:
+
 volumes:
   helloworld_grain_volume:
   myreminder_grain_volume:
   mongo_store_volume:
-
-networks:
-  orlean_demo:

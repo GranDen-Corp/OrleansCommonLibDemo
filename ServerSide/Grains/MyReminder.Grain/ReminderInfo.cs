@@ -1,6 +1,6 @@
 ﻿using Orleans.Runtime;
 
-namespace MyReminder.Grains
+namespace MyReminder.Grain
 {
     public class ReminderInfo
     {

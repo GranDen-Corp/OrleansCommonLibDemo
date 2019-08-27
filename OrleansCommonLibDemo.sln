@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientSide", "ClientSide", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld.ShareInterface", "RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj", "{17864AA1-7EFC-4D10-AF85-0E667D2F46B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld.Grain", "ServerSide\HelloWorld.Grain\HelloWorld.Grain.csproj", "{1F626E79-6B6F-46F8-877F-3AEA5540DB1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld.Grain", "ServerSide\Grains\HelloWorld.Grain\HelloWorld.Grain.csproj", "{1F626E79-6B6F-46F8-877F-3AEA5540DB1C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalConsoleSiloHost", "ServerSide\LocalConsoleSiloHost\LocalConsoleSiloHost.csproj", "{936C3069-4B40-48AA-BBD2-9AD4D8CD6E98}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClientDemo", "ClientSide
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Grains", "Grains", "{6032E46A-A6E2-453C-ABE5-4AACF2EB5D31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReminder.Grain", "ServerSide\MyReminder.Grain\MyReminder.Grain.csproj", "{E7151C21-33F8-407D-99E1-93F0C7E2CF3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReminder.Grain", "ServerSide\Grains\MyReminder.Grain\MyReminder.Grain.csproj", "{E7151C21-33F8-407D-99E1-93F0C7E2CF3F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReminder.ShareInterface", "RPC_Share\MyReminder.ShareInterface\MyReminder.ShareInterface.csproj", "{52A3B6D3-2BE4-4CDA-A731-2F0CD1841B06}"
 EndProject

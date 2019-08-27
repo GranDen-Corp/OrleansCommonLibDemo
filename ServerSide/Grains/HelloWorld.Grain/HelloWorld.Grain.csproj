@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <!--<OrleansCodeGenLogLevel>Trace</OrleansCodeGenLogLevel>-->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <OrleansCodeGenLogLevel>Trace</OrleansCodeGenLogLevel>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.1.6" />
+    <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.1.8" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
@@ -15,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RPC_Share\MyReminder.ShareInterface\MyReminder.ShareInterface.csproj" />
+    <ProjectReference Include="..\..\..\RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj" />
+    <ProjectReference Include="..\..\..\RPC_Share\VisitTracker.Interface\VisitTracker.Interface.csproj" />
   </ItemGroup>
 
 </Project>

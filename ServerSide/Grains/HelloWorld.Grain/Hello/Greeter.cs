@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace HelloWorld.Grains
+namespace HelloWorld.Grain.Hello
 {
     public class Greeter : IGreeter
     {

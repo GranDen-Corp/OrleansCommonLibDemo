@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HelloWorld.Grains.Tracker
+namespace HelloWorld.Grain.Tracker
 {
     public class VisitTrackerState
     {

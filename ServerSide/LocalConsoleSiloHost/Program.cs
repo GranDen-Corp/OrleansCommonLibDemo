@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
 using System;
+using System.Collections.Generic;
 using GranDen.Orleans.NetCoreGenericHost.CommonLib;
+using McMaster.NETCore.Plugins;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
@@ -19,19 +21,29 @@ namespace LocalConsoleSiloHost
             try
             {
                 var genericHost = genericHostBuilder.Build();
+                PluginCache = OrleansSiloBuilderExtension.PlugInLoaderCache;
                 genericHost.Run();
             }
             catch (OperationCanceledException exception)
             {
                 //do nothing
-                Log.Information(exception,"Orleans operation cancelled");
+                Log.Information(exception, "Orleans operation cancelled");
             }
             catch (Exception ex)
             {
                 Log.Error(ex, "Orleans Silo Host error");
                 throw;
             }
+            finally
+            {
+                foreach (var kv in PluginCache)
+                {
+                    kv.Value.Dispose();
+                }
+            }
         }
+
+        public static Dictionary<string, PluginLoader> PluginCache { get; set; }
 
         private static void SetupLogger()
         {

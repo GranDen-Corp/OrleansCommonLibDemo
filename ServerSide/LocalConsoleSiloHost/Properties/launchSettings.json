@@ -3,7 +3,7 @@
     "LocalConsoleSiloHost": {
       "commandName": "Project",
       "environmentVariables": {
-        "GrainLoadPath": "../../../../"
+        "GrainLoadPath": "../../../../Grains"
       }
     }
   }

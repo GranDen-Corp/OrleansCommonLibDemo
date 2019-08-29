@@ -32,7 +32,8 @@
     "GrainOption": {
       "LoadPaths": [
         "{GrainLoadPath}/HelloWorld.Grain/bin/Debug/netstandard2.0/HelloWorld.Grain.dll",
-        "{GrainLoadPath}/MyReminder.Grain/bin/Debug/netstandard2.0/MyReminder.Grain.dll"
+        "{GrainLoadPath}/MyReminder.Grain/bin/Debug/netstandard2.0/MyReminder.Grain.dll",
+        "{GrainLoadPath}/NumberGenerator.Grain/bin/Debug/netstandard2.0/NumberGenerator.Grain.dll"
       ],
       "ExcludedTypeFullNames": []
     }

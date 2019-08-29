@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj" />
     <ProjectReference Include="..\..\RPC_Share\MyReminder.ShareInterface\MyReminder.ShareInterface.csproj" />
+    <ProjectReference Include="..\..\RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj" />
   </ItemGroup>
 
 </Project>

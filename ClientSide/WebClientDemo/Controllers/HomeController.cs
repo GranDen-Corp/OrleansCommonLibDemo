@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using NumberGenerator.ShareInterface;
 using WebClientDemo.Models;
 
 namespace WebClientDemo.Controllers
@@ -46,7 +47,7 @@ namespace WebClientDemo.Controllers
         public async Task<IActionResult> CallGrainDemo(string input)
         {
             using (var client =
-                OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption, new[] { typeof(IHello) }))
+                OrleansClientBuilder.CreateClient(_logger, _clusterInfo, _providerOption, new[] { typeof(IHello), typeof(INumberGenerator) }))
             {
                 await client.ConnectWithRetryAsync();
                 _logger.LogInformation("Client successfully connect to silo host");
@@ -57,10 +58,13 @@ namespace WebClientDemo.Controllers
                 var returnValue = await grain.SayHello(input);
                 _logger.LogInformation($"RPC method return value is \r\n\r\n{{{returnValue}}}\r\n\r\n");
 
+                var randomNumberGrain = client.GetGrain<INumberGenerator>(input);
+                var luckyNumber = await randomNumberGrain.NextInt();
+
                 await client.Close();
                 _logger.LogInformation("Client successfully close connection to silo host");
 
-                TempData[DataKey] = JsonConvert.SerializeObject(new ResultViewModel { Result = returnValue });
+                TempData[DataKey] = JsonConvert.SerializeObject(new ResultViewModel { Result = $"{returnValue}<br/>LuckyNumber is <b>{luckyNumber}</b>" });
 
                 return RedirectToAction(nameof(Index));
             }

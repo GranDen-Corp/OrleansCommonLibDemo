@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="docker\obj\**" />
+    <EmbeddedResource Remove="docker\obj\**" />
+    <None Remove="docker\obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.1.8" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="2.4.1">

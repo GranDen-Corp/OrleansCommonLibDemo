@@ -6,7 +6,7 @@ WORKDIR /src
 COPY ["ServerSide/LocalConsoleSiloHost/LocalConsoleSiloHost.csproj", "ServerSide/LocalConsoleSiloHost/"]
 RUN dotnet restore "ServerSide/LocalConsoleSiloHost/LocalConsoleSiloHost.csproj"
 COPY . .
-WORKDIR "/src/ServerSide/LocalConsoleSiloHost"
+WORKDIR /src/ServerSide/LocalConsoleSiloHost
 RUN dotnet build "LocalConsoleSiloHost.csproj" -c Release -o /app
 
 FROM build AS publish

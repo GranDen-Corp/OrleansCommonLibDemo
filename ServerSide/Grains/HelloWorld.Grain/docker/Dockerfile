@@ -3,12 +3,12 @@ WORKDIR /app_grain
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["ServerSide/HelloWorld.Grain/HelloWorld.Grain.csproj", "ServerSide/HelloWorld.Grain/"]
+COPY ["ServerSide/Grains/HelloWorld.Grain/HelloWorld.Grain.csproj", "ServerSide/Grains/HelloWorld.Grain/"]
 COPY ["RPC_Share/VisitTracker.Interface/VisitTracker.Interface.csproj", "RPC_Share/VisitTracker.Interface/"]
 COPY ["RPC_Share/HelloWorld.ShareInterface/HelloWorld.ShareInterface.csproj", "RPC_Share/HelloWorld.ShareInterface/"]
-RUN dotnet restore "ServerSide/HelloWorld.Grain/HelloWorld.Grain.csproj"
+RUN dotnet restore "ServerSide/Grains/HelloWorld.Grain/HelloWorld.Grain.csproj"
 COPY . .
-WORKDIR /src/ServerSide/HelloWorld.Grain
+WORKDIR /src/ServerSide/Grains/HelloWorld.Grain
 RUN dotnet build "HelloWorld.Grain.csproj" -c Release -o /app_grain
 
 FROM build as publish

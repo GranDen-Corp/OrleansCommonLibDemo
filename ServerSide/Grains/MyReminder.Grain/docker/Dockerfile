@@ -3,11 +3,11 @@ WORKDIR /app_grain
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["ServerSide/MyReminder.Grain/MyReminder.Grain.csproj", "ServerSide/MyReminder.Grain/"]
+COPY ["ServerSide/Grains/MyReminder.Grain/MyReminder.Grain.csproj", "ServerSide/Grains/MyReminder.Grain/"]
 COPY ["RPC_Share/MyReminder.ShareInterface/MyReminder.ShareInterface.csproj", "RPC_Share/MyReminder.ShareInterface/"]
-RUN dotnet restore "ServerSide/MyReminder.Grain/MyReminder.Grain.csproj"
+RUN dotnet restore "ServerSide/Grains/MyReminder.Grain/MyReminder.Grain.csproj"
 COPY . .
-WORKDIR /src/ServerSide/MyReminder.Grain
+WORKDIR /src/ServerSide/Grains/MyReminder.Grain
 RUN dotnet build "MyReminder.Grain.csproj" -c Release -o /app_grain
 
 FROM build as publish

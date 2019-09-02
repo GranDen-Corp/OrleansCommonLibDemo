@@ -12,6 +12,8 @@ param(
     [String]$helloworld_grain_ver,
     [Parameter(HelpMessage = "MyReminder grain version")]
     [String]$myreminder_grain_ver,
+    [Parameter(HelpMessage = "NumberGenerator grain version")]
+    [String]$numbergenerator_grain_ver,
     [Parameter(HelpMessage = "Use timestamp for image tag")]
     [switch]$useTimeStamp = $false,
     [Parameter(HelpMessage = "Push images to repository")]
@@ -60,6 +62,15 @@ if ($myreminder_grain_ver) {
 elseif ($useTimeStamp) {
     $env:GRAIN_VER_MYREMINDER = $timeStamp;
     Write-Host "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
+}
+
+if ($numbergenerator_grain_ver) {
+    $env:GRAIN_VER_NUMBERGENERATOR = $numbergenerator_grain_ver;
+    Write-Host "Using NumberGenerator grain ver= `"$env:GRAIN_VER_NUMBERGENERATOR`"";
+}
+elseif ($useTimeStamp) {
+    $env:GRAIN_VER_NUMBERGENERATOR = $timeStamp;
+    Write-Host "Using NumberGenerator grain ver= `"$env:GRAIN_VER_NUMBERGENERATOR`"";
 }
 
 $execStr = "docker-compose -f docker-compose.yml -f docker-compose.override.yml build $other_args";

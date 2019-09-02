@@ -2,6 +2,8 @@
 
 This repository contains the example usage of Microsoft Orleans hosting library: [Orleans.NetCoreGenericHost.CommonLib](https://github.com/GranDen-Corp/Orleans.NetCoreGenericHost.CommonLib) and Client connecting library : [Orleans.Client.CommonLib](https://github.com/GranDen-Corp/Orleans.Client.CommonLib).
 
+Check readme on [ServerSide/Grains](./ServerSide/Grains/Readme.md) to see how to create a Orleans Grain that could be dynamic loaded in the example SiloHost backend server.
+
 To build and distributable docker images:
 
 1. Invoke docker login command to be able to access your target docker registry server:

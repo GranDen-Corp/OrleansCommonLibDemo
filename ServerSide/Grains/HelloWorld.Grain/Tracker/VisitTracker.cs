@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Orleans;
 using VisitTracker.Interface;
 
-namespace HelloWorld.Grains.Tracker
+namespace HelloWorld.Grain.Tracker
 {
     public class VisitTracker : Grain<VisitTrackerState>, IVisitTracker
     {

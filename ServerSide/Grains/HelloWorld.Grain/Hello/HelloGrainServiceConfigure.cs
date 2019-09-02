@@ -1,20 +1,18 @@
-﻿using GranDen.Orleans.Server.SharedInterface;
+﻿using System;
+using GranDen.Orleans.Server.SharedInterface;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Orleans.ApplicationParts;
-using System;
 using Microsoft.Extensions.Logging;
+using Orleans.CodeGeneration;
 
-namespace HelloWorld.Grains
+[assembly: KnownAssembly(typeof(HelloWorld.ShareInterface.IHello))]
+[assembly: KnownAssembly(typeof(VisitTracker.Interface.IVisitTracker))]
+
+namespace HelloWorld.Grain.Hello
 {
-    public class HelloGrainServiceConfigure : AbstractServiceConfigDelegate
+    // ReSharper disable once UnusedMember.Global
+    public class HelloGrainServiceConfigure : AbstractServiceConfigDelegate<HelloGrain>
     {
-        public override Action<IApplicationPartManager> AppPartConfigurationAction =>
-            part =>
-            {
-                part.AddDynamicPart(typeof(Greeter).Assembly);
-            };
-
         public override Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
         (ctx, services) =>
         {

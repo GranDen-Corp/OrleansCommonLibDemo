@@ -21,7 +21,6 @@ namespace ConsoleClientDemo
         {
             var (clusterInfo, providerOption) = GetConfigSettings();
             using (var client = OrleansClientBuilder.CreateClient(_logger, clusterInfo, providerOption))
-            //using (var client = OrleansClientBuilder.CreateLocalhostClient(_logger, 8310, clusterInfo.ClusterId, clusterInfo.ServiceId))
             {
                 await client.ConnectWithRetryAsync();
                 _logger.LogInformation("Client successfully connect to silo host");

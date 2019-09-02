@@ -1,14 +1,13 @@
-﻿using MyReminder.ShareInterface;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using MyReminder.ShareInterface;
 using Orleans;
 using Orleans.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MyReminder.Grains
+namespace MyReminder.Grain
 {
-    public class MyReminderGrain : Grain, IMyReminder, IRemindable
+    public class MyReminderGrain : Orleans.Grain, IMyReminder, IRemindable
     {
         private readonly IOutputMsg _outputMsg;
 

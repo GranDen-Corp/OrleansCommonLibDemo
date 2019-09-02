@@ -19,6 +19,7 @@ namespace ConsoleClientDemo
                 while (!Console.KeyAvailable)
                 {
                     //wait
+                    Task.Delay(new TimeSpan(0, 0, 1)).Wait();
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Spacebar);
 

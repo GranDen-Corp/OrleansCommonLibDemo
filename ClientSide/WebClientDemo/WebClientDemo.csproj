@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GranDen.Orleans.Client.CommonLib" Version="1.1.6" />
+    <PackageReference Include="GranDen.Orleans.Client.CommonLib" Version="1.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.2" />
@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj" />
     <ProjectReference Include="..\..\RPC_Share\MyReminder.ShareInterface\MyReminder.ShareInterface.csproj" />
+    <ProjectReference Include="..\..\RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj" />
   </ItemGroup>
 
 </Project>

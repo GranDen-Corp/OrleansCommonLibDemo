@@ -2,26 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <!--<OrleansCodeGenLogLevel>Trace</OrleansCodeGenLogLevel>-->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="docker\obj\**" />
-    <EmbeddedResource Remove="docker\obj\**" />
-    <None Remove="docker\obj\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.1.6" />
+    <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.1.8" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="RandomLib" Version="1.0.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RPC_Share\MyReminder.ShareInterface\MyReminder.ShareInterface.csproj" />
+    <ProjectReference Include="..\..\..\RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj" />
   </ItemGroup>
-
 </Project>

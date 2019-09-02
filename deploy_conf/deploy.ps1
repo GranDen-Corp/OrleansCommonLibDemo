@@ -12,6 +12,8 @@ param(
     [String]$helloworld_grain_ver,
     [Parameter(HelpMessage = "MyReminder grain version")]
     [String]$myreminder_grain_ver,
+    [Parameter(HelpMessage = "NumberGenerator grain version")]
+    [String]$numbergenerator_grain_ver,
     [Parameter(HelpMessage = "HTTP Port")]
     [int]$http_port,
     [Parameter(HelpMessage = "HTTPS Port")]
@@ -45,6 +47,11 @@ if ($helloworld_grain_ver) {
 if ($myreminder_grain_ver) {
     $env:GRAIN_VER_MYREMINDER = $myreminder_grain_ver;
     Write-Output "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
+}
+
+if ($numbergenerator_grain_ver) {
+    $env:GRAIN_VER_NUMBERGENERATOR = $numbergenerator_grain_ver;
+    Write-Output "Using Number Generator grain ver= `"$env:GRAIN_VER_NUMBERGENERATOR`"";
 }
 
 if ($http_port) {
@@ -88,6 +95,9 @@ if ($env:GRAIN_VER_HELLOWORLD) {
 }
 if ($env:GRAIN_VER_MYREMINDER) {
     Remove-Item Env:\GRAIN_VER_MYREMINDER;
+}
+if ($env:GRAIN_VER_NUMBERGENERATOR) {
+    Remove-Item Env:\GRAIN_VER_NUMBERGENERATOR;
 }
 if ($http_port) {
     Remove-Item Env:\HTTP_PORT;

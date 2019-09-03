@@ -1,5 +1,6 @@
 # Deploy via Docker Compose
 
+0. Install docker & docker-compose on target deploy environment.
 1. Install [PowerShell Core](https://github.com/powershell/powershell) v6.2 and above.
 2. Put a valid SSL [PKCS #12 Certificate File](https://fileinfo.com/extension/pfx#PKCS_#12_Certificate_File) inside the `ssl_cert` sub-directory, rename it as `demo-cert.pfx`.  
 (note: you can create a development certificate using .NET Core 2.x tool like [this](https://www.hanselman.com/blog/DevelopingLocallyWithASPNETCoreUnderHTTPSSSLAndSelfSignedCerts.aspx) told.)

@@ -1,6 +1,6 @@
 #!/usr/bin/env pwsh
 # input parameter
-[CmdletBinding(PositionalBinding=$false)]
+[CmdletBinding(PositionalBinding = $false)]
 param(
     [Parameter(HelpMessage = "docker registry")]
     [String]$registry,
@@ -14,6 +14,10 @@ param(
     [String]$myreminder_grain_ver,
     [Parameter(HelpMessage = "NumberGenerator grain version")]
     [String]$numbergenerator_grain_ver,
+    [Parameter(HelpMessage = "Override all grains version")]
+    [String]$override_grains_ver,
+    [Parameter(HelpMessage = "Override docker image version")]
+    [String]$override_img_ver,
     [Parameter(HelpMessage = "HTTP Port")]
     [int]$http_port,
     [Parameter(HelpMessage = "HTTPS Port")]
@@ -29,29 +33,57 @@ if ($registry) {
     Write-Output "Using Registry= `"$env:DOCKER_REGISTRY`"";
 }
 
-if ($siloHostVer) {
-    $env:SILO_HOST_VER = $siloHostVer;
+if ($override_img_ver) {
+    $env:SILO_HOST_VER = $override_img_ver;
     Write-Output "Using Silo Host Ver= `"$env:SILO_HOST_VER`"";
-}
 
-if ($webClientVer) {
-    $env:WEB_CLIENT_VER = $webClientVer;
+    $env:WEB_CLIENT_VER = $override_img_ver;
     Write-Output "Using Web Client ver= `"$env:WEB_CLIENT_VER`"";
-}
+    
+    $env:GRAIN_VER_HELLOWORLD = $override_img_ver;
+    Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";
 
-if ($helloworld_grain_ver) {
-    $env:GRAIN_VER_HELLOWORLD = $helloworld_grain_ver;
-    Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";    
-}
-
-if ($myreminder_grain_ver) {
-    $env:GRAIN_VER_MYREMINDER = $myreminder_grain_ver;
+    $env:GRAIN_VER_MYREMINDER = $override_img_ver;
     Write-Output "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
-}
 
-if ($numbergenerator_grain_ver) {
-    $env:GRAIN_VER_NUMBERGENERATOR = $numbergenerator_grain_ver;
+    $env:GRAIN_VER_NUMBERGENERATOR = $override_img_ver;
     Write-Output "Using Number Generator grain ver= `"$env:GRAIN_VER_NUMBERGENERATOR`"";
+}
+elseif ($override_grains_ver) {
+    $env:GRAIN_VER_HELLOWORLD = $override_grains_ver;
+    Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";
+
+    $env:GRAIN_VER_MYREMINDER = $override_grains_ver;
+    Write-Output "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
+
+    $env:GRAIN_VER_NUMBERGENERATOR = $override_grains_ver;
+    Write-Output "Using Number Generator grain ver= `"$env:GRAIN_VER_NUMBERGENERATOR`"";
+}
+else {
+    if ($siloHostVer) {
+        $env:SILO_HOST_VER = $siloHostVer;
+        Write-Output "Using Silo Host Ver= `"$env:SILO_HOST_VER`"";
+    }
+    
+    if ($webClientVer) {
+        $env:WEB_CLIENT_VER = $webClientVer;
+        Write-Output "Using Web Client ver= `"$env:WEB_CLIENT_VER`"";
+    }
+    
+    if ($helloworld_grain_ver) {
+        $env:GRAIN_VER_HELLOWORLD = $helloworld_grain_ver;
+        Write-Output "Using Helloworld grain ver= `"$env:GRAIN_VER_HELLOWORLD`"";    
+    }
+    
+    if ($myreminder_grain_ver) {
+        $env:GRAIN_VER_MYREMINDER = $myreminder_grain_ver;
+        Write-Output "Using MyReminder grain ver= `"$env:GRAIN_VER_MYREMINDER`"";
+    }
+    
+    if ($numbergenerator_grain_ver) {
+        $env:GRAIN_VER_NUMBERGENERATOR = $numbergenerator_grain_ver;
+        Write-Output "Using Number Generator grain ver= `"$env:GRAIN_VER_NUMBERGENERATOR`"";
+    }
 }
 
 if ($http_port) {

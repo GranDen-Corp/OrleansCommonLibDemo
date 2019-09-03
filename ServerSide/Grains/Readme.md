@@ -13,7 +13,7 @@
       `public override Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction { get; }`  
       statment if you doesn't have any Dependecy Injection usage in Grain class.
 4. Add an attribute `[assembly: KnownAssembly(typeof(IMyGrain))]` on top of the class that previously created, the `IMyGrain` is the Orleans Grain RPC interface that is declared in RCP interface project.  
-   Follwing is an example code of the above 4 & 5 steps:  
+   Follwing is an example code of the aforementioned 3 & 4 steps:  
 
    ```cs
    using Orleans.CodeGeneration;

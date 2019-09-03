@@ -1,25 +1,58 @@
 #!/usr/bin/env pwsh
+
+<#
+.SYNOPSIS
+
+Scripts to create docker images for deliver to Docker Registry.
+
+.DESCRIPTION
+
+This PowerShell script combined with the docker-compose.yml files to produce depolyment Docker images and also provide options to push to Docker Registry.
+
+.EXAMPLE
+build_docker_imgs.ps1 -registry your_registry_url -useTimeStamp -pushImgs
+
+#>
+
 # input parameter
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(HelpMessage = "docker registry")]
-    [String]$registry,
+    [String]
+    #Specify the docker registry that will push to.
+    $registry,
     [Parameter(HelpMessage = "silo host version")]
-    [String]$siloHostVer,
+    [String]
+    #Silo Host version number.
+    $siloHostVer,
     [Parameter(HelpMessage = "web client version")]
-    [String]$webClientVer,
+    [String]
+    #Invoke Orleans RPC web client version number.
+    $webClientVer,
     [Parameter(HelpMessage = "Helloworld grain version")]
-    [String]$helloworld_grain_ver,
+    [String]
+    #Helloworld grain version number.
+    $helloworld_grain_ver,
     [Parameter(HelpMessage = "MyReminder grain version")]
-    [String]$myreminder_grain_ver,
+    [String]
+    #MyReminder grain version number.
+    $myreminder_grain_ver,
     [Parameter(HelpMessage = "NumberGenerator grain version")]
-    [String]$numbergenerator_grain_ver,
+    [String]
+    #Number generator version number.
+    $numbergenerator_grain_ver,
     [Parameter(HelpMessage = "Use timestamp for image tag")]
-    [switch]$useTimeStamp = $false,
+    [switch]
+    #Tag all docker images tags using "yyyyMMdd-HHmmss" time stamp.
+    $useTimeStamp = $false,
     [Parameter(HelpMessage = "Push images to repository")]
-    [switch]$pushImgs = $false,
+    [switch]
+    #Push docker images after build.
+    $pushImgs = $false,
     [Parameter(ValueFromRemainingArguments)]
-    [String]$other_args
+    [String]
+    #Other command line arguments for docker-compose, needs to use full parameter syntax.
+    $other_args
 )
 
 $timeStamp = (Get-Date).ToUniversalTime().ToString("yyyyMMdd-HHmmss")

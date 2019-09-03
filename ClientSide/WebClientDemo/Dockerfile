@@ -8,6 +8,7 @@ WORKDIR /src
 COPY ["ClientSide/WebClientDemo/WebClientDemo.csproj", "ClientSide/WebClientDemo/"]
 COPY ["RPC_Share/MyReminder.ShareInterface/MyReminder.ShareInterface.csproj", "RPC_Share/MyReminder.ShareInterface/"]
 COPY ["RPC_Share/HelloWorld.ShareInterface/HelloWorld.ShareInterface.csproj", "RPC_Share/HelloWorld.ShareInterface/"]
+COPY ["RPC_Share/NumberGenerator.ShareInterface/NumberGenerator.ShareInterface.csproj", "RPC_Share/NumberGenerator.ShareInterface/"]
 RUN dotnet restore "ClientSide/WebClientDemo/WebClientDemo.csproj"
 COPY . .
 WORKDIR "/src/ClientSide/WebClientDemo"

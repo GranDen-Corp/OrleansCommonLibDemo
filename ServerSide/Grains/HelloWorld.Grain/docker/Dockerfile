@@ -1,10 +1,10 @@
-FROM alpine:3.8 AS base
+FROM alpine:3.10 AS base
 WORKDIR /app_grain
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-alpine AS build
 WORKDIR /src
 COPY ["ServerSide/Grains/HelloWorld.Grain/HelloWorld.Grain.csproj", "ServerSide/Grains/HelloWorld.Grain/"]
-COPY ["RPC_Share/VisitTracker.Interface/VisitTracker.Interface.csproj", "RPC_Share/VisitTracker.Interface/"]
+COPY ["RPC_Share/VisitTracker.ShareInterface/VisitTracker.ShareInterface.csproj", "RPC_Share/VisitTracker.ShareInterface/"]
 COPY ["RPC_Share/HelloWorld.ShareInterface/HelloWorld.ShareInterface.csproj", "RPC_Share/HelloWorld.ShareInterface/"]
 RUN dotnet restore "ServerSide/Grains/HelloWorld.Grain/HelloWorld.Grain.csproj"
 COPY . .

@@ -19,7 +19,9 @@
 **/values.dev.yaml
 **/.toolstarget
 LICENSE
+global.json
 **/Readme.md
 *.sln
+*.dcproj
 build_docker_imgs.ps1
 deploy_conf/*

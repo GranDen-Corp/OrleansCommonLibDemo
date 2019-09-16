@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   orleans_silohost:
-    image: ${DOCKER_REGISTRY-}localconsolesilohost:${SILO_HOST_VER:-latest}
+    image: ${DOCKER_REGISTRY-}orleans_demo/localconsolesilohost:${SILO_HOST_VER:-latest}
     build:
       context: .
       dockerfile: ServerSide/LocalConsoleSiloHost/Dockerfile
@@ -19,7 +19,7 @@ services:
       - mongo_store
 
   helloworld_grain:
-    image: ${DOCKER_REGISTRY-}helloworld_grain:${GRAIN_VER_HELLOWORLD:-latest}
+    image: ${DOCKER_REGISTRY-}orleans_demo/helloworld_grain:${GRAIN_VER_HELLOWORLD:-latest}
     build:
       context: .
       dockerfile: ServerSide/Grains/HelloWorld.Grain/docker/Dockerfile
@@ -27,7 +27,7 @@ services:
       - helloworld_grain_volume:/app_grain
 
   myreminder_grain:
-    image: ${DOCKER_REGISTRY-}myreminder_grain:${GRAIN_VER_MYREMINDER:-latest}
+    image: ${DOCKER_REGISTRY-}orleans_demo/myreminder_grain:${GRAIN_VER_MYREMINDER:-latest}
     build:
       context: .
       dockerfile: ./ServerSide/Grains/MyReminder.Grain/docker/Dockerfile
@@ -35,7 +35,7 @@ services:
       - myreminder_grain_volume:/app_grain
 
   numbergenerator_grain:
-    image: ${DOCKER_REGISTRY-}numbergenerator_grain:${GRAIN_VER_NUMBERGENERATOR:-latest}
+    image: ${DOCKER_REGISTRY-}orleans_demo/numbergenerator_grain:${GRAIN_VER_NUMBERGENERATOR:-latest}
     build:
       context: .
       dockerfile: ./ServerSide/Grains/NumberGenerator.Grain/docker/Dockerfile
@@ -43,7 +43,7 @@ services:
       - numbergenerator_grain_volume:/app_grain
 
   webclientdemo:
-    image: ${DOCKER_REGISTRY-}webclientdemo:${WEB_CLIENT_VER:-latest}
+    image: ${DOCKER_REGISTRY-}orleans_demo/webclientdemo:${WEB_CLIENT_VER:-latest}
     build:
       context: .
       dockerfile: ClientSide/WebClientDemo/Dockerfile

@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   console_silohost:
-    image: ${DOCKER_REGISTRY}localconsolesilohost:${SILO_HOST_VER:-latest}
+    image: ${DOCKER_REGISTRY}orleans_demo/localconsolesilohost:${SILO_HOST_VER:-latest}
     environment:
       - GrainLoadPath=/grains
       - ORLEANS_HOST_APP_Orleans__GrainOption__LoadPaths__0={GrainLoadPath}/helloworld_grain/HelloWorld.Grain.dll
@@ -30,22 +30,22 @@ services:
       - demo_mongo_store
 
   helloworld_grain:
-    image: ${DOCKER_REGISTRY}helloworld_grain:${GRAIN_VER_HELLOWORLD:-latest}
+    image: ${DOCKER_REGISTRY}orleans_demo/helloworld_grain:${GRAIN_VER_HELLOWORLD:-latest}
     volumes:
       - helloworld_grain_volume:/app_grain:ro
 
   myreminder_grain:
-    image: ${DOCKER_REGISTRY}myreminder_grain:${GRAIN_VER_MYREMINDER:-latest}
+    image: ${DOCKER_REGISTRY}orleans_demo/myreminder_grain:${GRAIN_VER_MYREMINDER:-latest}
     volumes:
       - myreminder_grain_volume:/app_grain:ro
 
   numbergenerator_grain:
-    image: ${DOCKER_REGISTRY}numbergenerator_grain:${GRAIN_VER_NUMBERGENERATOR:-latest}
+    image: ${DOCKER_REGISTRY}orleans_demo/numbergenerator_grain:${GRAIN_VER_NUMBERGENERATOR:-latest}
     volumes:
       - numbergenerator_grain_volume:/app_grain:ro
 
   webclientdemo:
-    image: ${DOCKER_REGISTRY}webclientdemo:${WEB_CLIENT_VER:-latest}
+    image: ${DOCKER_REGISTRY}orleans_demo/webclientdemo:${WEB_CLIENT_VER:-latest}
     environment:
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=${HTTPS_PORT:-443}

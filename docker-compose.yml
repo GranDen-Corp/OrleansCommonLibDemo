@@ -52,7 +52,7 @@ services:
     depends_on: 
       - orleans_silohost
       - mongo_store
-  
+
   mongo_store:
     image: mongo:4
     volumes:

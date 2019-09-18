@@ -18,6 +18,10 @@ namespace LocalConsoleSiloHost
 
             var genericHostBuilder = OrleansSiloBuilderExtension.CreateHostBuilder(args).ApplySerilog();
 
+#if DEBUG
+            genericHostBuilder.UseEnvironment(EnvironmentName.Development);
+#endif
+
             try
             {
                 var genericHost = genericHostBuilder.Build();
@@ -49,6 +53,7 @@ namespace LocalConsoleSiloHost
         {
             var logConfig = new LoggerConfiguration()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .MinimumLevel.Override("Orleans.RuntimeSiloLogStatistics", LogEventLevel.Warning)
                 .MinimumLevel.Override("Orleans.Runtime.Management.ManagementGrain", LogEventLevel.Warning)
                 .MinimumLevel.Override("Orleans.Runtime.MembershipService.MembershipTableManager", LogEventLevel.Warning)
                 .MinimumLevel.Override("Orleans.Runtime.SiloControl", LogEventLevel.Warning)

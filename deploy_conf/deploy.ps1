@@ -2,11 +2,9 @@
 
 <#
 .SYNOPSIS
-
 Scripts to deploy docker-compose configurated combination services.
 
 .DESCRIPTION
-
 This PowerShell script combined with the docker-compose.yml files to pull and deploy docker images from Docker Registry.
 
 .EXAMPLE
@@ -24,7 +22,7 @@ This PowerShell script combined with the docker-compose.yml files to pull and de
 param(
     [Parameter(HelpMessage = "docker registry")]
     [String]
-    #Specify the docker registry that will push to.
+    #Specify the docker registry that docker images will pull from.
     $registry,
     [Parameter(HelpMessage = "silo host version")]
     [String]

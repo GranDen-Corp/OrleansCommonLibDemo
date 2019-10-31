@@ -1,7 +1,7 @@
-FROM alpine:3.8 AS base
+FROM alpine:3.10 AS base
 WORKDIR /app_grain
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-alpine AS build
 WORKDIR /src
 COPY ["ServerSide/Grains/NumberGenerator.Grain/NumberGenerator.Grain.csproj", "ServerSide/Grains/NumberGenerator.Grain/"]
 COPY ["RPC_Share/NumberGenerator.ShareInterface/NumberGenerator.ShareInterface.csproj", "RPC_Share/NumberGenerator.ShareInterface/"]

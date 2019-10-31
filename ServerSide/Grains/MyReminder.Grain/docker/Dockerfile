@@ -1,7 +1,7 @@
-FROM alpine:3.8 AS base
+FROM alpine:3.10 AS base
 WORKDIR /app_grain
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-alpine AS build
 WORKDIR /src
 COPY ["ServerSide/Grains/MyReminder.Grain/MyReminder.Grain.csproj", "ServerSide/Grains/MyReminder.Grain/"]
 COPY ["RPC_Share/MyReminder.ShareInterface/MyReminder.ShareInterface.csproj", "RPC_Share/MyReminder.ShareInterface/"]

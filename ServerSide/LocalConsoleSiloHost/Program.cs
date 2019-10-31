@@ -19,7 +19,7 @@ namespace LocalConsoleSiloHost
             var genericHostBuilder = OrleansSiloBuilderExtension.CreateHostBuilder(args).ApplySerilog();
 
 #if DEBUG
-            genericHostBuilder.UseEnvironment(EnvironmentName.Development);
+            genericHostBuilder.UseEnvironment(Environments.Development);
 #endif
 
             try

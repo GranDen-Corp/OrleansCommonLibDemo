@@ -17,9 +17,9 @@
 
    ```cs
    using Orleans.CodeGeneration;
-   
+
    [assembly: KnownAssembly(typeof(MyReminder.ShareInterface.IMyReminder))]
-   
+
    namespace MyReminder.Grain
    {
       // ReSharper disable once UnusedMember.Global
@@ -33,5 +33,5 @@
       }
    }
    ```
-   
+    
 5. Add `<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>` inside the RPC implementation project file(***.csproj**)'s `<PropertyGroup>`.  

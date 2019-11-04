@@ -1,11 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+  <PropertyGroup Condition=" '$(NETCoreSdkVersion)' &lt; 3">
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup Condition=" '$(NETCoreSdkVersion)' &gt;= 3">
+    <TargetFrameworks>netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.2' ">
     <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
+    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

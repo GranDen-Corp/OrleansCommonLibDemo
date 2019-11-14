@@ -30,17 +30,17 @@ namespace WebClientDemo.Hubs
         }
 
         // ReSharper disable once UnusedMember.Global
-        public ChannelReader<string> CheckJobStatus(Ulid grainId)
+        public ChannelReader<string> CheckJobStatus(string grainId, CancellationToken cancellationToken)
         {
             var channel = Channel.CreateUnbounded<string>();
-            _ = DetectLongRunningTaskStatus(channel.Writer, grainId, 3, new CancellationToken());
+            _ = DetectLongRunningTaskStatus(channel.Writer, Ulid.Parse(grainId), 3, cancellationToken);
 
             return channel.Reader;
         }
 
         #region Private Methods
 
-        private async Task DetectLongRunningTaskStatus(ChannelWriter<string> writer, Ulid grainId, int delay,CancellationToken cancellationToken)
+        private async Task DetectLongRunningTaskStatus(ChannelWriter<string> writer, Ulid grainId, int delay, CancellationToken cancellationToken)
         {
             try
             {

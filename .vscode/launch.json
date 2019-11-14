@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/ClientSide/WebClientDemo/bin/Debug/netcoreapp2.2/WebClientDemo.dll",
+            "program": "${workspaceFolder}/ClientSide/WebClientDemo/bin/Debug/netcoreapp3.0/WebClientDemo.dll",
             "args": [],
             "cwd": "${workspaceFolder}/ClientSide/WebClientDemo",
             "stopAtEntry": false,
@@ -30,7 +30,7 @@
             "request": "launch",
             "preLaunchTask": "build cmd client",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ClientSide/ConsoleClientDemo/bin/Debug/netcoreapp2.2/ConsoleClientDemo.dll",
+            "program": "${workspaceFolder}/ClientSide/ConsoleClientDemo/bin/Debug/netcoreapp3.0/ConsoleClientDemo.dll",
             "args": [],
             "cwd": "${workspaceFolder}/ClientSide/ConsoleClientDemo",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
@@ -51,7 +51,7 @@
             "request": "launch",
             "preLaunchTask": "build demo server",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/ServerSide/LocalConsoleSiloHost/bin/Debug/netcoreapp2.2/LocalConsoleSiloHost.dll",
+            "program": "${workspaceFolder}/ServerSide/LocalConsoleSiloHost/bin/Debug/netcoreapp3.0/LocalConsoleSiloHost.dll",
             "args": [],
             "cwd": "${workspaceFolder}/ServerSide/LocalConsoleSiloHost",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Orleans;
 using System.Threading.Tasks;
-using Orleans;
 
-namespace VisitTracker.Interface
+namespace VisitTracker.ShareInterface
 {
     public interface IVisitTracker : IGrainWithStringKey
     {

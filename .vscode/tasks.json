@@ -10,15 +10,22 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ]
         },
         {
             "label": "build demo grains",
-            "dependsOn":[
+            "dependsOn": [
                 "build HelloWorld grain",
-                "build MyReminder grain"
+                "build MyReminder grain",
+                "build Number Generator grain"
             ],
-            "group": "build"
+            "group": "build",
+            "problemMatcher": [
+                "$msCompile"
+            ]
         },
         {
             "label": "build HelloWorld grain",
@@ -26,7 +33,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ServerSide/HelloWorld.Grain/HelloWorld.Grain.csproj"
+                "${workspaceFolder}/ServerSide/Grains/HelloWorld.Grain/HelloWorld.Grain.csproj"
             ],
             "problemMatcher": "$msCompile",
             "group": "build"
@@ -37,7 +44,18 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ServerSide/MyReminder.Grain/MyReminder.Grain.csproj"
+                "${workspaceFolder}/ServerSide/Grains/MyReminder.Grain/MyReminder.Grain.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "build Number Generator grain",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/ServerSide/Grains/NumberGenerator.Grain/NumberGenerator.Grain.csproj"
             ],
             "problemMatcher": "$msCompile",
             "group": "build"
@@ -52,7 +70,7 @@
             ],
             "problemMatcher": "$msCompile",
             "group": "build",
-            "dependsOn":[
+            "dependsOn": [
                 "build demo grains"
             ]
         },

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Orleans.CodeGeneration;
 
 [assembly: KnownAssembly(typeof(HelloWorld.ShareInterface.IHello))]
-[assembly: KnownAssembly(typeof(VisitTracker.Interface.IVisitTracker))]
+[assembly: KnownAssembly(typeof(VisitTracker.ShareInterface.IVisitTracker))]
 
 namespace HelloWorld.Grain.Hello
 {

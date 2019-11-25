@@ -12,6 +12,7 @@
             "program": "${workspaceFolder}/ClientSide/WebClientDemo/bin/Debug/netcoreapp3.0/WebClientDemo.dll",
             "args": [],
             "cwd": "${workspaceFolder}/ClientSide/WebClientDemo",
+            "console": "externalTerminal",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",

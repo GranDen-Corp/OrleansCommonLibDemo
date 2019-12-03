@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HelloWorld.ShareInterface;
 using Microsoft.Extensions.Logging;
-using VisitTracker.Interface;
+using VisitTracker.ShareInterface;
 
 namespace HelloWorld.Grain.Hello
 {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Orleans;
-using VisitTracker.Interface;
+using VisitTracker.ShareInterface;
 
 namespace HelloWorld.Grain.Tracker
 {

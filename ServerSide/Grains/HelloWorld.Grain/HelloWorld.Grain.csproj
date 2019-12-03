@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\RPC_Share\HelloWorld.ShareInterface\HelloWorld.ShareInterface.csproj" />
-    <ProjectReference Include="..\..\..\RPC_Share\VisitTracker.Interface\VisitTracker.Interface.csproj" />
+    <ProjectReference Include="..\..\..\RPC_Share\VisitTracker.ShareInterface\VisitTracker.ShareInterface.csproj" />
   </ItemGroup>
 
 </Project>

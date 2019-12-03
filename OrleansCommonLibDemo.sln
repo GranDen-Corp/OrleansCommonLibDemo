@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReminder.Grain", "ServerS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReminder.ShareInterface", "RPC_Share\MyReminder.ShareInterface\MyReminder.ShareInterface.csproj", "{52A3B6D3-2BE4-4CDA-A731-2F0CD1841B06}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitTracker.Interface", "RPC_Share\VisitTracker.Interface\VisitTracker.Interface.csproj", "{2C536C7D-CAA8-4D66-9894-56741FC7EAF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitTracker.ShareInterface", "RPC_Share\VisitTracker.ShareInterface\VisitTracker.ShareInterface.csproj", "{2C536C7D-CAA8-4D66-9894-56741FC7EAF3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberGenerator.Grain", "ServerSide\Grains\NumberGenerator.Grain\NumberGenerator.Grain.csproj", "{31C74EAC-64C3-43D8-BB42-53269B4BDBCD}"
 EndProject

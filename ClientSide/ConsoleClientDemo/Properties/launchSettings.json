@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "ConsoleClientDemo": {
+      "commandName": "Project",
+      "environmentVariables": {
+      }
+    }
+  }
+}

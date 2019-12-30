@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.CodeGeneration;
 
-[assembly: KnownAssembly(typeof(MyReminder.ShareInterface.IMyReminder))]
+[assembly: GenerateSerializer(typeof(MyReminder.ShareInterface.IMyReminder))]
 
 namespace MyReminder.Grain
 {

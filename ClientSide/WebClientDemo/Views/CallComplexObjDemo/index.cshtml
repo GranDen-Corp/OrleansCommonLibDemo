@@ -1,0 +1,21 @@
+﻿@model WebClientDemo.Models.CallComplexObjViewModel
+
+@{
+    ViewData["Title"] = "CallComplexObjDemo";
+}
+
+<h1>Call Complex Object Demo</h1>
+
+@if (Model == null)
+{
+    <form asp-action="CallGrainRpcDemo" method="post">
+        <input type="submit" value="Call Grain" />
+    </form>
+}
+else
+{
+    <div>
+        Call Result = @Html.Raw(@Model.Result)
+    </div>
+}
+

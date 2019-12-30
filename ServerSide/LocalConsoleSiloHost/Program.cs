@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using GranDen.Orleans.NetCoreGenericHost.CommonLib;
 using McMaster.NETCore.Plugins;
+using Microsoft.ApplicationInsights;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using Serilog.Events;
-using Serilog.Exceptions;
-using Serilog.Sinks.SystemConsole.Themes;
 
 namespace LocalConsoleSiloHost
 {
@@ -14,9 +14,31 @@ namespace LocalConsoleSiloHost
     {
         static void Main(string[] args)
         {
-            SetupLogger();
+            //SetupTopLogger();
 
-            var genericHostBuilder = OrleansSiloBuilderExtension.CreateHostBuilder(args).ApplySerilog();
+            var genericHostBuilder =
+                OrleansSiloBuilderExtension.CreateHostBuilder(args, configFilePrefix: "appsettings")
+                                           .ConfigureAppConfiguration((hostBuilderContext, configurationBuilder) => 
+                                           {
+                                               if(hostBuilderContext.HostingEnvironment.IsDevelopment())
+                                               {
+                                                   configurationBuilder.AddUserSecrets<Program>();
+                                               }
+                                           })
+                                           .ConfigureServices((hostContext, services) =>
+                                           {
+                                               services.AddApplicationInsightsTelemetryWorkerService();
+                                           })
+                                           .UseSerilog((hostBuilderContext, loggerConfiguration) =>
+                                           {
+                                               loggerConfiguration.ReadFrom.Configuration(hostBuilderContext.Configuration);
+
+                                               var telemetryClient = CreateTelemetryClient(hostBuilderContext);
+                                               if (telemetryClient != null)
+                                               {
+                                                   loggerConfiguration.WriteTo.ApplicationInsights(telemetryClient, TelemetryConverter.Traces);
+                                               }
+                                           });
 
 #if DEBUG
             genericHostBuilder.UseEnvironment(Environments.Development);
@@ -49,24 +71,19 @@ namespace LocalConsoleSiloHost
 
         public static Dictionary<string, PluginLoader> PluginCache { get; set; }
 
-        private static void SetupLogger()
+        private static TelemetryClient CreateTelemetryClient(HostBuilderContext hostBuilderContext)
         {
-            var logConfig = new LoggerConfiguration()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .MinimumLevel.Override("Orleans.RuntimeSiloLogStatistics", LogEventLevel.Warning)
-                .MinimumLevel.Override("Orleans.Runtime.Management.ManagementGrain", LogEventLevel.Warning)
-                .MinimumLevel.Override("Orleans.Runtime.MembershipService.MembershipTableManager", LogEventLevel.Warning)
-                .MinimumLevel.Override("Orleans.Runtime.SiloControl", LogEventLevel.Warning)
-                .Enrich.FromLogContext()
-                .Enrich.WithProcessId()
-                .Enrich.WithProcessName()
-                .Enrich.WithThreadId()
-                .Enrich.WithExceptionDetails()
-                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-                .WriteTo.Trace()
-                .WriteTo.Debug();
+            var key = hostBuilderContext.Configuration.GetValue<string>("ApplicationInsights:InstrumentationKey");
+            if (string.IsNullOrEmpty(key))
+            {
+                return null;
+            }
 
-            Log.Logger = logConfig.CreateLogger();
+            var provider = new ServiceCollection()
+                .AddApplicationInsightsTelemetryWorkerService(key).BuildServiceProvider();
+            var telemetryClient = provider.GetRequiredService<TelemetryClient>();
+            telemetryClient.InstrumentationKey = key;
+            return telemetryClient;
         }
     }
 }

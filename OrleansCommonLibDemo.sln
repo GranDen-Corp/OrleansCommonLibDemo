@@ -19,6 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalConsoleSiloHost", "Ser
 	ProjectSection(ProjectDependencies) = postProject
 		{E7151C21-33F8-407D-99E1-93F0C7E2CF3F} = {E7151C21-33F8-407D-99E1-93F0C7E2CF3F}
 		{1F626E79-6B6F-46F8-877F-3AEA5540DB1C} = {1F626E79-6B6F-46F8-877F-3AEA5540DB1C}
+		{3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D} = {3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D}
 		{31C74EAC-64C3-43D8-BB42-53269B4BDBCD} = {31C74EAC-64C3-43D8-BB42-53269B4BDBCD}
 	EndProjectSection
 EndProject
@@ -34,7 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisitTracker.ShareInterface
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberGenerator.Grain", "ServerSide\Grains\NumberGenerator.Grain\NumberGenerator.Grain.csproj", "{31C74EAC-64C3-43D8-BB42-53269B4BDBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberGenerator.ShareInterface", "RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj", "{972BF163-C3FE-4BF5-A478-E8934DFBA048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberGenerator.ShareInterface", "RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj", "{972BF163-C3FE-4BF5-A478-E8934DFBA048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexTypeDemo.ShareInterface", "RPC_Share\ComplexTypeDemo.ShareInterface\ComplexTypeDemo.ShareInterface.csproj", "{5C2D9301-64E0-403D-AC65-28207F4C26AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexTypeDemo.Grain", "ServerSide\Grains\ComplexTypeDemo.Grain\ComplexTypeDemo.Grain.csproj", "{3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +87,14 @@ Global
 		{972BF163-C3FE-4BF5-A478-E8934DFBA048}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{972BF163-C3FE-4BF5-A478-E8934DFBA048}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{972BF163-C3FE-4BF5-A478-E8934DFBA048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2D9301-64E0-403D-AC65-28207F4C26AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C2D9301-64E0-403D-AC65-28207F4C26AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2D9301-64E0-403D-AC65-28207F4C26AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C2D9301-64E0-403D-AC65-28207F4C26AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +111,8 @@ Global
 		{2C536C7D-CAA8-4D66-9894-56741FC7EAF3} = {CAA363EF-87D5-4F6A-BC99-A91C459599A1}
 		{31C74EAC-64C3-43D8-BB42-53269B4BDBCD} = {6032E46A-A6E2-453C-ABE5-4AACF2EB5D31}
 		{972BF163-C3FE-4BF5-A478-E8934DFBA048} = {CAA363EF-87D5-4F6A-BC99-A91C459599A1}
+		{5C2D9301-64E0-403D-AC65-28207F4C26AE} = {CAA363EF-87D5-4F6A-BC99-A91C459599A1}
+		{3EAB83A4-7D89-4C12-8EBB-B5C43D13E45D} = {6032E46A-A6E2-453C-ABE5-4AACF2EB5D31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6FA0BD6-611E-4F9B-B03A-8401D3881C28}

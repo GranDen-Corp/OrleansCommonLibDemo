@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <!--<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>-->
+    <OrleansCodeGenLogLevel>Trace</OrleansCodeGenLogLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;ORL1001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GranDen.Orleans.Server.SharedInterface" Version="1.2.5" />
+    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\RPC_Share\ComplexTypeDemo.ShareInterface\ComplexTypeDemo.ShareInterface.csproj" />
+    <ProjectReference Include="..\..\..\RPC_Share\NumberGenerator.ShareInterface\NumberGenerator.ShareInterface.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -3,7 +3,7 @@ using Orleans;
 
 namespace NumberGenerator.ShareInterface
 {
-    public interface INumberGenerator : IGrainWithStringKey
+    public interface INumberGenerator : IGrainWithGuidKey
     {
         Task<int> NextInt();
 

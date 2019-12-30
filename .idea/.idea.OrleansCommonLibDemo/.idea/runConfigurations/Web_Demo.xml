@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Web_Demo" type="CompoundRunConfigurationType">
+    <toRun name="LocalConsoleSiloHost" type="LaunchSettings" />
+    <toRun name="WebClientDemo" type="LaunchSettings" />
+    <method v="2" />
+  </configuration>
+</component>

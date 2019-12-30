@@ -34,7 +34,7 @@ namespace WebClientDemo.Controllers
 
         public IActionResult Index()
         {
-            if (!TempData.TryGetValue(DataKey, out Object o))
+            if (!TempData.TryGetValue(DataKey, out var o))
             {
                 return View();
             }
@@ -58,7 +58,7 @@ namespace WebClientDemo.Controllers
                 var returnValue = await grain.SayHello(input);
                 _logger.LogInformation($"RPC method return value is \r\n\r\n{{{returnValue}}}\r\n\r\n");
 
-                var randomNumberGrain = client.GetGrain<INumberGenerator>(input);
+                var randomNumberGrain = client.GetGrain<INumberGenerator>(Guid.Empty);
                 var luckyNumber = await randomNumberGrain.NextInt();
 
                 await client.Close();

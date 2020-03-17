@@ -36,5 +36,9 @@
     <PackageReference Include="Serilog.Sinks.Trace" Version="2.1.0" />
     <PackageReference Include="System.Management" Version="4.7.0" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Grains\NumberGenerator.Grain\NumberGenerator.Grain.csproj" />
+  </ItemGroup>
 
 </Project>

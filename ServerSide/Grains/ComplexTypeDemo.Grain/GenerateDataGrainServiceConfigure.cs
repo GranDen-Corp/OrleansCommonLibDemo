@@ -1,5 +1,4 @@
 ﻿using System;
-using ComplexTypeDemo.Grain.ObjGenerator;
 using ComplexTypeDemo.ShareInterface;
 using GranDen.Orleans.Server.SharedInterface;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +21,7 @@ namespace ComplexTypeDemo.Grain
         public override Action<HostBuilderContext, IServiceCollection> ServiceConfigurationAction =>
             (ctx, services) =>
             {
-                //services.AddTransient<ICreateMyType, MyTypeGenerator>();
+                // services.AddTransient<ICreateMyType, MyTypeGenerator>();
             };
     }
 }

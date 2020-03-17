@@ -23,7 +23,7 @@ namespace ComplexTypeDemo.Grain
 
             try
             {
-                var randomGrain = GrainFactory.GetGrain<INumberGenerator>(Guid.Empty);
+                var randomGrain = GrainFactory.GetGrain<INumberGenerator>(typeof(INumberGenerator),Guid.Empty);
 
                 var ret = new ComplexCollection();
 
